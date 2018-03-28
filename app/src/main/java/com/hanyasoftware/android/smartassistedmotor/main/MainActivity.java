@@ -1,10 +1,13 @@
 package com.hanyasoftware.android.smartassistedmotor.main;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,7 +22,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -104,6 +106,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void exitOnClick() {
-        // TODO: exit application
+        new AlertDialog.Builder(this)
+                .setIcon(R.drawable.ic_warning_black_24dp)
+                .setTitle("Keluar")
+                .setMessage("Apakah anda ingin keluar dari aplikasi?")
+                .setPositiveButton("YA", (dialog, which) -> {
+                    dialog.dismiss();
+                    //Stop the activity
+                    MainActivity.this.finish();
+                })
+                .setNegativeButton("TIDAK", (dialogInterface, i) -> dialogInterface.dismiss())
+                .show();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        //Handle the back button
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            //Ask the user if they want to quit
+            new AlertDialog.Builder(this)
+                    .setIcon(R.drawable.ic_warning_black_24dp)
+                    .setTitle("Keluar")
+                    .setMessage("Apakah anda ingin keluar dari aplikasi?")
+                    .setPositiveButton("YA", (dialog, which) -> {
+                        dialog.dismiss();
+                        //Stop the activity
+                        MainActivity.this.finish();
+                    })
+                    .setNegativeButton("TIDAK", (dialogInterface, i) -> dialogInterface.dismiss())
+                    .show();
+
+            return true;
+        }
+        else {
+            return super.onKeyDown(keyCode, event);
+        }
+
     }
 }
