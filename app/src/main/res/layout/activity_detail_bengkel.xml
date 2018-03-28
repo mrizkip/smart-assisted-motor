@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context="com.hanyasoftware.android.smartassistedmotor.DetailBengkelActivity">
+
+    <include layout="@layout/view_toolbar" />
+    
+    <LinearLayout
+        android:id="@+id/detailBengkel_layoutContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/detailBengkel_textNamaBengkel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Nama Bengkel"
+            android:textSize="14sp"
+            android:textColor="@color/secondaryText"
+            />
+
+        <TextView
+            android:id="@+id/detailBengkel_namaBengkel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Bengkel A"
+            android:textSize="16sp"
+            android:textColor="@color/primaryText"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/line_divider"
+            />
+
+        <TextView
+            android:id="@+id/detailBengkel_textAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Alamat Bengkel"
+            android:textSize="14sp"
+            android:textColor="@color/secondaryText"
+            />
+
+        <TextView
+            android:id="@+id/detailBengkel_alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Jl. Veteran No. 1"
+            android:textSize="16sp"
+            android:textColor="@color/primaryText"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/line_divider"
+            />
+
+        <Button
+            android:id="@+id/detailBengkel_buttonLihatMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:drawableStart="@drawable/ic_map_black_24dp"
+            android:drawableLeft="@drawable/ic_map_black_24dp"
+            android:paddingRight="20dp"
+            android:drawableTint="#FFFFFF"
+            android:paddingLeft="20dp"
+            android:text="Lihat pada Maps"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_background"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hanyasoftware.android.smartassistedmotor.DiagnosisActivity">
+
+    <include layout="@layout/view_toolbar" />
+
+    <ImageView
+        android:id="@+id/diagnosis_logo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_logo_flat_black"
+        android:tint="@color/colorPrimaryDark" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/diagnosis_cardViewJarakTempuh"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/diagnosis_logo">
+
+        <RelativeLayout
+            android:id="@+id/diagnosis_layoutTextJarak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/diagnosis_textJarakTempuh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="JARAK TERCAPAI: "
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/diagnosis_jarakKm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text=" KM"
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/diagnosis_jarakTempuh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/diagnosis_textJarakTempuh"
+                android:layout_toLeftOf="@id/diagnosis_jarakKm"
+                android:layout_toRightOf="@id/diagnosis_textJarakTempuh"
+                android:layout_toStartOf="@id/diagnosis_jarakKm"
+                android:gravity="right"
+                android:text="10.000"
+                android:textColor="#c40000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/diagnosis_cardContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/diagnosis_cardViewJarakTempuh"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/diagnosis_textDiagnosis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Diagnosis pada jarak 10.000 km"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/line_divider" />
+
+            <TextView
+                android:id="@+id/diagnosis_textDiagnosis1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:text="1. Ganti Oli Mesin"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/line_divider" />
+
+            <TextView
+                android:id="@+id/diagnosis_textDiagnosis2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="2. Ganti V-Belt"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/line_divider" />
+
+            <TextView
+                android:id="@+id/diagnosis_textDiagnosis3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="3. Cek / Ganti Busi"
+                android:textColor="@color/primaryText"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/line_divider" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

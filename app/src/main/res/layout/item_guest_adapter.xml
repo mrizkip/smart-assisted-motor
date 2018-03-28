@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF" >
+
+    <View
+        android:id="@+id/guestAdapter_lineDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/guestAdapter_lineDivider"
+        android:padding="20dp"
+        >
+        <TextView
+            android:id="@+id/guestAdapter_textKm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kilometer"
+            android:textColor="@color/primaryText"
+            android:textSize="18sp"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>
