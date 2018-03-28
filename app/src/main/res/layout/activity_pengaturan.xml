@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="com.hanyasoftware.android.smartassistedmotor.PengaturanActivity">
+    tools:context="com.hanyasoftware.android.smartassistedmotor.pengaturan.PengaturanActivity">
 
     <include layout="@layout/view_toolbar" />
 

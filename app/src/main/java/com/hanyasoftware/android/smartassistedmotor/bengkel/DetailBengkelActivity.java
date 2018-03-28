@@ -1,7 +1,9 @@
-package com.hanyasoftware.android.smartassistedmotor;
+package com.hanyasoftware.android.smartassistedmotor.bengkel;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.hanyasoftware.android.smartassistedmotor.R;
 
 public class DetailBengkelActivity extends AppCompatActivity {
 

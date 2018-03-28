@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="com.hanyasoftware.android.smartassistedmotor.DetailBengkelActivity">
+    tools:context="com.hanyasoftware.android.smartassistedmotor.bengkel.DetailBengkelActivity">
 
     <include layout="@layout/view_toolbar" />
     

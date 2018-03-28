@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanyasoftware.android.smartassistedmotor">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,21 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MotorActivity" />
-        <activity android:name=".DiagnosisActivity" />
-        <activity android:name=".BengkelActivity" />
-        <activity android:name=".RiwayatActivity" />
-        <activity android:name=".GuestActivity" />
-        <activity android:name=".PengaturanActivity" />
-        <activity android:name=".DetailBengkelActivity" />
-        <activity android:name=".DetailGuestActivity"></activity>
+        <activity android:name=".motor.MotorActivity" />
+        <activity android:name=".diagnosis.DiagnosisActivity" />
+        <activity android:name=".bengkel.BengkelActivity" />
+        <activity android:name=".riwayat.RiwayatActivity" />
+        <activity android:name=".guest.GuestActivity" />
+        <activity android:name=".pengaturan.PengaturanActivity" />
+        <activity android:name=".bengkel.DetailBengkelActivity" />
+        <activity android:name=".guest.DetailGuestActivity"></activity>
     </application>
 
 </manifest>
