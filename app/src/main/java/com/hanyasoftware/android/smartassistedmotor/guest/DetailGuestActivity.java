@@ -1,7 +1,9 @@
-package com.hanyasoftware.android.smartassistedmotor;
+package com.hanyasoftware.android.smartassistedmotor.guest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.hanyasoftware.android.smartassistedmotor.R;
 
 public class DetailGuestActivity extends AppCompatActivity {
 
