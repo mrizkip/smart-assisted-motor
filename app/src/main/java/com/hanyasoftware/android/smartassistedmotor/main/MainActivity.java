@@ -1,5 +1,6 @@
 package com.hanyasoftware.android.smartassistedmotor.main;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
@@ -14,6 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
+import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
+import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.Jarak;
 import com.hanyasoftware.android.smartassistedmotor.riwayat.RiwayatActivity;
 import com.hanyasoftware.android.smartassistedmotor.bengkel.BengkelActivity;
 import com.hanyasoftware.android.smartassistedmotor.diagnosis.DiagnosisActivity;
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     ActionBar actionBar;
 
     private int jarakTempuhKm;
+    private MainViewModel mainViewModel;
+    private Jarak jarak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +64,12 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setTitle("Smart Assisted Motor");
         }
 
-        // TODO: HITUNG JARAK TEMPUH
-//        jarakTempuhKm = ??
+        mainViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getMainViewModelFactory())
+                .get(MainViewModel.class);
+        mainViewModel.getJarak().observe(this, jarak1 -> {
+            jarak = jarak1;
+            jarakTempuh.setText(jarak.getJarak());
+        });
 
         // motor on click
         motorContainer.setOnClickListener(v -> motorOnClick());
@@ -89,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void diagnosisOnClick() {
         Intent intent = new Intent(MainActivity.this, DiagnosisActivity.class);
+        intent.putExtra("jarak", jarak.getJarak());
         startActivity(intent);
     }
 
@@ -124,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         //Handle the back button
-        if(keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             //Ask the user if they want to quit
             new AlertDialog.Builder(this)
                     .setIcon(R.drawable.ic_warning_black_24dp)
@@ -139,8 +149,7 @@ public class MainActivity extends AppCompatActivity {
                     .show();
 
             return true;
-        }
-        else {
+        } else {
             return super.onKeyDown(keyCode, event);
         }
 

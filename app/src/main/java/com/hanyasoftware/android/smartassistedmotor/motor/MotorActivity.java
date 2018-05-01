@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
-import com.hanyasoftware.android.smartassistedmotor.repository.entity.Motor;
+import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.Motor;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

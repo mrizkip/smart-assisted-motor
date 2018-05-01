@@ -1,4 +1,4 @@
-package com.hanyasoftware.android.smartassistedmotor.repository.entity;
+package com.hanyasoftware.android.smartassistedmotor.repository.entity.local;
 
 /**
  * Created by mrizk on 28/03/2018.
