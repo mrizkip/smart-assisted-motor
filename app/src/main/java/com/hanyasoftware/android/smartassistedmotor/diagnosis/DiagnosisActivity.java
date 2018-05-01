@@ -1,5 +1,6 @@
 package com.hanyasoftware.android.smartassistedmotor.diagnosis;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,12 +40,14 @@ public class DiagnosisActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        Intent intent = getIntent();
+        String jarak = intent.getStringExtra("jarak");
+
         // set km
-        jarakTempuh.setText("10.000");
+        jarakTempuh.setText(jarak);
 
         // set diagnosis
-        textDiagnosis.setText("Diagnosis pada jarak " + "10.000" + " km.");
-
+        textDiagnosis.setText("Diagnosis pada jarak " + jarak + " km.");
 
     }
 
