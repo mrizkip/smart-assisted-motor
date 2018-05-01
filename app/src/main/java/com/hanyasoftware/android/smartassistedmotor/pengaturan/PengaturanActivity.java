@@ -1,5 +1,6 @@
 package com.hanyasoftware.android.smartassistedmotor.pengaturan;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,8 @@ public class PengaturanActivity extends AppCompatActivity {
     }
 
     private void alarmOnClick() {
-
+        Intent intent = new Intent(PengaturanActivity.this, PengaturanAlarmActivity.class);
+        startActivity(intent);
     }
 
     private void suaraOnClick() {

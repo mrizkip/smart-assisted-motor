@@ -86,7 +86,20 @@
             android:paddingLeft="20dp"
             android:text="Lihat pada Maps"
             android:textColor="#FFFFFF"
-            android:background="@drawable/button_background"
+            android:backgroundTint="@color/colorPrimary"
+            />
+
+        <Button
+            android:id="@+id/detailBengkel_buttonLihatAntrian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:text="Lihat Antrian Bengkel"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/colorPrimary"
             />
 
     </LinearLayout>

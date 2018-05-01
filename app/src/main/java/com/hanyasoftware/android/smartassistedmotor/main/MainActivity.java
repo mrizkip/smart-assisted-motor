@@ -2,12 +2,14 @@ package com.hanyasoftware.android.smartassistedmotor.main;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,22 +25,22 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
+    @BindView(R.id.main_toolbar)
     Toolbar toolbar;
     @BindView(R.id.main_jarakTempuh)
     TextView jarakTempuh;
     @BindView(R.id.main_motorContainer)
-    RelativeLayout motorContainer;
+    ConstraintLayout motorContainer;
     @BindView(R.id.main_bengkelContainer)
-    RelativeLayout bengkelContainer;
+    ConstraintLayout bengkelContainer;
     @BindView(R.id.main_diagnosisContainer)
-    RelativeLayout diagnosisContainer;
+    ConstraintLayout diagnosisContainer;
     @BindView(R.id.main_riwayatContainer)
-    RelativeLayout riwayatContainer;
+    ConstraintLayout riwayatContainer;
     @BindView(R.id.main_pengaturanContainer)
-    RelativeLayout pengaturanContainer;
+    ConstraintLayout pengaturanContainer;
     @BindView(R.id.main_exitContainer)
-    RelativeLayout exitContainer;
+    ConstraintLayout exitContainer;
 
     ActionBar actionBar;
 
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                     //Stop the activity
                     MainActivity.this.finish();
                 })
-                .setNegativeButton("TIDAK", (dialogInterface, i) -> dialogInterface.dismiss())
+                .setNegativeButton("TIDAK", (dialogInterface, i) -> dialogInterface.cancel())
                 .show();
     }
 
@@ -133,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         //Stop the activity
                         MainActivity.this.finish();
                     })
-                    .setNegativeButton("TIDAK", (dialogInterface, i) -> dialogInterface.dismiss())
+                    .setNegativeButton("TIDAK", (dialogInterface, i) -> dialogInterface.cancel())
                     .show();
 
             return true;
