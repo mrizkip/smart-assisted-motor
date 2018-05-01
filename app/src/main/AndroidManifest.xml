@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanyasoftware.android.smartassistedmotor">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -26,7 +26,8 @@
         <activity android:name=".guest.GuestActivity" />
         <activity android:name=".pengaturan.PengaturanActivity" />
         <activity android:name=".bengkel.DetailBengkelActivity" />
-        <activity android:name=".guest.DetailGuestActivity"></activity>
+        <activity android:name=".guest.DetailGuestActivity" />
+        <activity android:name=".pengaturan.PengaturanAlarmActivity"></activity>
     </application>
 
 </manifest>

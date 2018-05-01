@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SmartAssistedMotor</string>
+
+    <string-array name="kilometer">
+        <item>10 Km</item>
+        <item>20 Km</item>
+        <item>50 Km</item>
+        <item>100 Km</item>
+    </string-array>
 </resources>
