@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
+import com.hanyasoftware.android.smartassistedmotor.guest.GuestActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +22,8 @@ public class PengaturanActivity extends AppCompatActivity {
     TextView motor;
     @BindView(R.id.pengaturan_suara)
     TextView suara;
+    @BindView(R.id.pengaturan_guest)
+    TextView guest;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     ActionBar actionBar;
@@ -47,6 +50,9 @@ public class PengaturanActivity extends AppCompatActivity {
 
         // motor on click
         motor.setOnClickListener(v -> motorOnClick());
+
+        // guest on click
+        guest.setOnClickListener(v -> guestOnCLick());
     }
 
     private void alarmOnClick() {
@@ -60,6 +66,11 @@ public class PengaturanActivity extends AppCompatActivity {
 
     private void motorOnClick() {
 
+    }
+
+    private void guestOnCLick() {
+        Intent intent = new Intent(PengaturanActivity.this, GuestActivity.class);
+        startActivity(intent);
     }
 
     @Override

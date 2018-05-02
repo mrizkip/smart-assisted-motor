@@ -7,4 +7,9 @@
         <item>50 Km</item>
         <item>100 Km</item>
     </string-array>
+
+    <string-array name="motor">
+        <item>CB 150R</item>
+        <item>Motor 2</item>
+    </string-array>
 </resources>
