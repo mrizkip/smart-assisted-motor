@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context="com.hanyasoftware.android.smartassistedmotor.guest.GuestActivity">
 
     <include layout="@layout/view_toolbar" />
@@ -13,18 +13,61 @@
         android:id="@+id/guest_logo"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/toolbar"
         android:layout_margin="10dp"
         android:src="@drawable/ic_logo_flat_black"
         android:tint="@color/colorPrimaryDark" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pilih Motor"
+        android:textColor="@color/primaryText"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        />
+
+    <Spinner
+        android:id="@+id/guest_spinnerMotor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:entries="@array/motor"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/line_divider"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pembacaan Odometer / Jarak Yang Tercapai"
+        android:textSize="16sp"
+        android:textColor="@color/primaryText"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/line_divider"
+        android:layout_marginTop="16dp"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/guest_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/guest_recyclerView"
         >
 
     </android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+</LinearLayout>

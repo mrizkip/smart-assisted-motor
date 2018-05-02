@@ -1,54 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detailGuest_adapter"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
-    >
+    android:orientation="horizontal">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/itemDetailGuest_no"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/border"
+        android:gravity="end|top"
+        android:maxLines="1"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:text="1"
+        android:textColor="@color/primaryText"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/itemDetailGuest_namaBarang"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/border"
+        android:gravity="start|top"
+        android:padding="5dp"
+        android:text="Saluran Bahan Bakar"
+        android:textColor="@color/primaryText"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/itemDetailGuest_keteranggan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/itemDetailGuest_no"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:text="1"
-            android:textColor="@color/primaryText"
-            android:textSize="14sp"
-            android:maxLines="1"
-            android:gravity="end|top"
-            android:paddingRight="5dp"
-            android:paddingTop="5dp"
-            android:background="@drawable/border"
-            />
+        android:layout_height="match_parent"
+        android:background="@drawable/border"
+        android:gravity="start|top"
+        android:padding="5dp"
+        android:text="Periksa dan bersihkan, setel, lumasi atau ganti bila perlu"
+        android:textColor="@color/primaryText"
+        android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/itemDetailGuest_namaBarang"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            android:background="@drawable/border"
-            android:text="Saluran Bahan Bakar"
-            android:textSize="14sp"
-            android:textColor="@color/primaryText"
-            android:gravity="start|top"
-            />
-
-        <TextView
-            android:id="@+id/itemDetailGuest_keteranggan"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            android:background="@drawable/border"
-            android:text="Periksa dan bersihkan, setel, lumasi atau ganti bila perlu"
-            android:textColor="@color/primaryText"
-            android:textSize="14sp"
-            android:gravity="start|top"
-            />
-
-    </LinearLayout>
-
-
-
-</RelativeLayout>
+</LinearLayout>
