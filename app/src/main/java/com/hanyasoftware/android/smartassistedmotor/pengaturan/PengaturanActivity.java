@@ -22,8 +22,6 @@ public class PengaturanActivity extends AppCompatActivity {
     TextView motor;
     @BindView(R.id.pengaturan_suara)
     TextView suara;
-    @BindView(R.id.pengaturan_guest)
-    TextView guest;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     ActionBar actionBar;
@@ -51,8 +49,6 @@ public class PengaturanActivity extends AppCompatActivity {
         // motor on click
         motor.setOnClickListener(v -> motorOnClick());
 
-        // guest on click
-        guest.setOnClickListener(v -> guestOnCLick());
     }
 
     private void alarmOnClick() {

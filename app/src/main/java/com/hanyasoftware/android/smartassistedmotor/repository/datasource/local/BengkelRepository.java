@@ -28,8 +28,6 @@ public class BengkelRepository {
     }
 
     public Observable<List<Bengkel>> fetchBengkel(String latitude, String longitude) {
-//        String lat = "-7.953598";
-//        String longi = "112.609925";
         String radius = "3";
         return iFetchBengkel.fetchBengkelBukaWithRadius(latitude, longitude, radius)
                 .toObservable()
