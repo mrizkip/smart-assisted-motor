@@ -2,8 +2,11 @@ package com.hanyasoftware.android.smartassistedmotor.di.module;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchBengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchJarak;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.BengkelRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.JarakRepository;
+import com.hanyasoftware.android.smartassistedmotor.repository.transformer.BengkelResponseToBengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.transformer.JarakResponseToJarak;
 
 import javax.inject.Singleton;
@@ -78,5 +81,17 @@ public class DataModule {
     @Singleton
     public JarakRepository provideJarakRepository(IFetchJarak iFetchJarak, JarakResponseToJarak jarakResponseToJarak) {
         return new JarakRepository(iFetchJarak, jarakResponseToJarak);
+    }
+
+    @Provides
+    @Singleton
+    public IFetchBengkel provideIFetchBengkel(Retrofit retrofit) {
+        return retrofit.create(IFetchBengkel.class);
+    }
+
+    @Provides
+    @Singleton
+    public BengkelRepository provideBengkelRepository(IFetchBengkel iFetchBengkel, BengkelResponseToBengkel bengkelResponseToBengkel) {
+        return new BengkelRepository(iFetchBengkel, bengkelResponseToBengkel);
     }
 }

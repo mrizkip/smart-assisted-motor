@@ -40,13 +40,13 @@ public class DetailBengkelActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        bengkel.setIdBengkel(intent.getIntExtra("id", 0));
-        bengkel.setNama(intent.getStringExtra("nama"));
-        bengkel.setAlamat(intent.getStringExtra("alamat"));
-        bengkel.setMerk(intent.getStringExtra("merk"));
-        bengkel.setJarak(intent.getDoubleExtra("jarak", 0));
-        bengkel.setLatitude(intent.getStringExtra("latitude"));
-        bengkel.setLongitude(intent.getStringExtra("longitude"));
+        bengkel.setBngId(intent.getStringExtra("id"));
+        bengkel.setBngNama(intent.getStringExtra("nama"));
+        bengkel.setBngAlamat(intent.getStringExtra("alamat"));
+        bengkel.setKtgNama(intent.getStringExtra("merk"));
+        bengkel.setDistance(intent.getStringExtra("jarak"));
+        bengkel.setBngLatitude(intent.getStringExtra("latitude"));
+        bengkel.setBngLongitude(intent.getStringExtra("longitude"));
 
         if (toolbar != null) setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -55,13 +55,13 @@ public class DetailBengkelActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        nama.setText(bengkel.getNama());
-        alamat.setText(bengkel.getAlamat());
+        nama.setText(bengkel.getBngNama());
+        alamat.setText(bengkel.getBngAlamat());
 
         btnMap.setOnClickListener(v -> {
-            String latitude = bengkel.getLatitude();
-            String longitude = bengkel.getLongitude();
-            String label = bengkel.getNama();
+            String latitude = bengkel.getBngLatitude();
+            String longitude = bengkel.getBngLongitude();
+            String label = bengkel.getBngNama();
             String uriBegin = "geo:" + latitude + "," + longitude;
             String query = latitude + "," + longitude + "(" + label + ")";
             String encodedQuery = Uri.encode(query);
