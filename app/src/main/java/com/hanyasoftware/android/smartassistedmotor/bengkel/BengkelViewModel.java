@@ -25,20 +25,15 @@ public class BengkelViewModel extends ViewModel {
         this.bengkelRepository = bengkelRepository;
         this.bengkelToBengkelAdapter = bengkelToBengkelAdapter;
         listBengkel = new MutableLiveData<>();
-
-        fetchBengkel();
     }
 
-    private void fetchBengkel() {
-        bengkelRepository.fetchBengkel()
+    public LiveData<List<BengkelAdapter>> getBengkelList(String latitude, String longitude) {
+        bengkelRepository.fetchBengkel(latitude, longitude)
                 .subscribe(bengkels -> {
                     listBengkel.postValue(bengkelToBengkelAdapter.transform(bengkels));
                 }, throwable -> {
                     Log.e(TAG, "fetchBengkel: Error");
                 });
-    }
-
-    public LiveData<List<BengkelAdapter>> getBengkelList() {
         return listBengkel;
     }
 

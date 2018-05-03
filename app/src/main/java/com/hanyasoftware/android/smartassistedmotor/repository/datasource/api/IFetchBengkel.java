@@ -12,7 +12,7 @@ import retrofit2.http.POST;
 public interface IFetchBengkel {
 
     @FormUrlEncoded
-    @POST("api/listbengkelbukawithradius")
+    @POST("api/listbengkelwithradius")
     Single<List<BengkelResponse>> fetchBengkelBukaWithRadius(@Field("lat") String latitude,
                                                              @Field("long") String longitude,
                                                              @Field("radius") String radius);
