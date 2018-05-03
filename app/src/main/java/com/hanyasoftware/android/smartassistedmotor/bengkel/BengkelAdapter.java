@@ -15,68 +15,113 @@ import butterknife.ButterKnife;
 
 public class BengkelAdapter extends AbstractItem<BengkelAdapter, BengkelAdapter.ViewHolder> {
 
-    private int idBengkel;
-    private String nama;
-    private String alamat;
-    private double jarak;
-    private String merk;
-    private String latitude;
-    private String longitude;
+    private String bngId;
+    private String bngNama;
+    private String bngAlamat;
+    private String bngLatitude;
+    private String bngLongitude;
+    private String bngHariBuka;
+    private String bngJamBuka;
+    private String bngJamTutup;
+    private String bngKtgId;
+    private String ktgId;
+    private String ktgNama;
+    private String distance;
 
-    public int getIdBengkel() {
-        return idBengkel;
+    public String getBngId() {
+        return bngId;
     }
 
-    public void setIdBengkel(int idBengkel) {
-        this.idBengkel = idBengkel;
+    public void setBngId(String bngId) {
+        this.bngId = bngId;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public String getBngNama() {
+        return bngNama;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public void setBngNama(String bngNama) {
+        this.bngNama = bngNama;
     }
 
-    public String getLongitude() {
-        return longitude;
+    public String getBngAlamat() {
+        return bngAlamat;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public void setBngAlamat(String bngAlamat) {
+        this.bngAlamat = bngAlamat;
     }
 
-    public String getNama() {
-        return nama;
+    public String getBngLatitude() {
+        return bngLatitude;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setBngLatitude(String bngLatitude) {
+        this.bngLatitude = bngLatitude;
     }
 
-    public String getAlamat() {
-        return alamat;
+    public String getBngLongitude() {
+        return bngLongitude;
     }
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public void setBngLongitude(String bngLongitude) {
+        this.bngLongitude = bngLongitude;
     }
 
-    public double getJarak() {
-        return jarak;
+    public String getBngHariBuka() {
+        return bngHariBuka;
     }
 
-    public void setJarak(double jarak) {
-        this.jarak = jarak;
+    public void setBngHariBuka(String bngHariBuka) {
+        this.bngHariBuka = bngHariBuka;
     }
 
-    public String getMerk() {
-        return merk;
+    public String getBngJamBuka() {
+        return bngJamBuka;
     }
 
-    public void setMerk(String merk) {
-        this.merk = merk;
+    public void setBngJamBuka(String bngJamBuka) {
+        this.bngJamBuka = bngJamBuka;
+    }
+
+    public String getBngJamTutup() {
+        return bngJamTutup;
+    }
+
+    public void setBngJamTutup(String bngJamTutup) {
+        this.bngJamTutup = bngJamTutup;
+    }
+
+    public String getBngKtgId() {
+        return bngKtgId;
+    }
+
+    public void setBngKtgId(String bngKtgId) {
+        this.bngKtgId = bngKtgId;
+    }
+
+    public String getKtgId() {
+        return ktgId;
+    }
+
+    public void setKtgId(String ktgId) {
+        this.ktgId = ktgId;
+    }
+
+    public String getKtgNama() {
+        return ktgNama;
+    }
+
+    public void setKtgNama(String ktgNama) {
+        this.ktgNama = ktgNama;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
     }
 
     @NonNull
@@ -115,19 +160,19 @@ public class BengkelAdapter extends AbstractItem<BengkelAdapter, BengkelAdapter.
 
         @Override
         public void bindView(BengkelAdapter item, List<Object> payloads) {
-            nama.setText(item.getNama());
-            alamat.setText(item.getAlamat());
-            jarak.setText(String.valueOf(item.getJarak()) + " Km");
-            if (item.getMerk().equalsIgnoreCase("HONDA")) {
+            nama.setText(item.bngNama);
+            alamat.setText(item.bngAlamat);
+            jarak.setText(String.valueOf(item.getDistance()) + " Km");
+            if (item.getKtgNama().equalsIgnoreCase("HONDA")) {
                 merk.setText("HONDA");
                 merk.setBackgroundResource(R.drawable.label_honda);
-            } else if (item.getMerk().equalsIgnoreCase("YAMAHA")) {
+            } else if (item.getKtgNama().equalsIgnoreCase("YAMAHA")) {
                 merk.setText("YAMAHA");
                 merk.setBackgroundResource(R.drawable.label_yamaha);
-            } else if (item.getMerk().equalsIgnoreCase("KAWASAKI")) {
+            } else if (item.getKtgNama().equalsIgnoreCase("KAWASAKI")) {
                 merk.setText("KAWASAKI");
                 merk.setBackgroundResource(R.drawable.label_kawasaki);
-            } else if (item.getMerk().equalsIgnoreCase("SUZUKI")) {
+            } else if (item.getKtgNama().equalsIgnoreCase("SUZUKI")) {
                 merk.setText("SUZUKI");
                 merk.setBackgroundResource(R.drawable.label_suzuki);
             } else {

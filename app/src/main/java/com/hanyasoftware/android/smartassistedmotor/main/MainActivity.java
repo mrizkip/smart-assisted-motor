@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setTitle("Smart Assisted Motor");
         }
 
+        jarak = new Jarak();
         mainViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getMainViewModelFactory())
                 .get(MainViewModel.class);
         mainViewModel.getJarak().observe(this, jarak1 -> {
@@ -98,7 +99,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void diagnosisOnClick() {
         Intent intent = new Intent(MainActivity.this, DiagnosisActivity.class);
-        intent.putExtra("jarak", jarak.getJarak());
+        String jarakIntent;
+        if (jarak.getJarak() == null || jarak.getJarak().isEmpty()) {
+            jarakIntent = "0";
+        } else {
+            jarakIntent = jarak.getJarak();
+        }
+        intent.putExtra("jarak", jarakIntent);
         startActivity(intent);
     }
 
