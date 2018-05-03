@@ -1,5 +1,7 @@
 package com.hanyasoftware.android.smartassistedmotor.guest;
 
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,9 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
+import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.listeners.OnClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +32,8 @@ public class GuestActivity extends AppCompatActivity {
     private List<GuestAdapter> cb150rAdapters;
     private List<GuestAdapter> motor2Adapters;
     private FastItemAdapter<GuestAdapter> fastItemAdapter;
+
+    private String motor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +54,7 @@ public class GuestActivity extends AppCompatActivity {
         spinnerMotor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
-                String motor = adapterView.getItemAtPosition(pos).toString();
+                motor = adapterView.getItemAtPosition(pos).toString();
 
                 if (motor.equalsIgnoreCase("CB 150R")) {
                     fastItemAdapter.set(cb150rAdapters);
@@ -62,6 +69,16 @@ public class GuestActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+        });
+
+        fastItemAdapter.withSelectable(true);
+        fastItemAdapter.withOnClickListener((v, adapter, item, position) -> {
+            String km = item.getKilometer();
+            Intent intent = new Intent(GuestActivity.this, DetailGuestActivity.class);
+            intent.putExtra("motor", motor);
+            intent.putExtra("kilometer", km);
+            startActivity(intent);
+            return true;
         });
 
     }

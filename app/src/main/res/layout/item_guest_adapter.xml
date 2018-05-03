@@ -3,7 +3,7 @@
     android:id="@+id/guestAdapter_adapter"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
     <View
