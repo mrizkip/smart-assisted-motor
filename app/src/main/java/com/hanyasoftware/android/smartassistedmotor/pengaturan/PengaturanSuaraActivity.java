@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
+import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
 import com.kevalpatel.ringtonepicker.RingtonePickerDialog;
 import com.kevalpatel.ringtonepicker.RingtonePickerListener;
 
@@ -34,6 +36,10 @@ public class PengaturanSuaraActivity extends AppCompatActivity {
 
     private RingtonePickerDialog.Builder ringtonePicker;
     private Ringtone ringtone;
+    private Uri ringtoneUri;
+    private String ringtoneName;
+
+    private SharedPrefsRepository sharedPrefsRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +55,21 @@ public class PengaturanSuaraActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        // Ringtone picker builder and set default ringtone
-        Uri defaultUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        ringtone = RingtoneManager.getRingtone(this, defaultUri);
+        // get ringtone from shared preference
+        sharedPrefsRepository = SAMApplication.getDataComponent().getSharedPrefsRepository();
+        String savedUriString = sharedPrefsRepository.getRingtoneUriFromPrefs();
+        String savedRingtoneName = sharedPrefsRepository.getRingtoneNameFromPrefs();
+        if (savedUriString == null || savedRingtoneName == null) {
+            ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            ringtoneName = "Default";
+        } else {
+            ringtoneUri = Uri.parse(savedUriString);
+            ringtoneName = savedRingtoneName;
+        }
+        tvRingtone.setText(ringtoneName);
+        ringtone = RingtoneManager.getRingtone(this, ringtoneUri);
+
+        // Ringtone picker builder
         buildRingtonePicker();
 
         // set ringtone
@@ -63,6 +81,9 @@ public class PengaturanSuaraActivity extends AppCompatActivity {
         // simpan
         btnSimpan.setOnClickListener(v -> {
             ringtone.stop();
+            String uriString = String.valueOf(ringtoneUri);
+            String nameString = ringtoneName;
+            sharedPrefsRepository.saveRingtoneToPrefs(uriString, nameString);
             Toast.makeText(this, "Ringtone berhasil disimpan", Toast.LENGTH_SHORT).show();
             finish();
         });
@@ -80,6 +101,8 @@ public class PengaturanSuaraActivity extends AppCompatActivity {
         ringtonePicker.addRingtoneType(RingtonePickerDialog.Builder.TYPE_RINGTONE);
         ringtonePicker.setListener((RingtonePickerListener) (ringtoneName, ringtoneUri) -> {
             tvRingtone.setText(ringtoneName);
+            this.ringtoneName = ringtoneName;
+            this.ringtoneUri = ringtoneUri;
             ringtone = RingtoneManager.getRingtone(this, ringtoneUri);
             ringtone.play();
         });

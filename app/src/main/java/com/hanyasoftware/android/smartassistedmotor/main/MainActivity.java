@@ -1,8 +1,11 @@
 package com.hanyasoftware.android.smartassistedmotor.main;
 
+import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +16,7 @@ import android.view.KeyEvent;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
 import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
@@ -22,6 +26,16 @@ import com.hanyasoftware.android.smartassistedmotor.bengkel.BengkelActivity;
 import com.hanyasoftware.android.smartassistedmotor.diagnosis.DiagnosisActivity;
 import com.hanyasoftware.android.smartassistedmotor.motor.MotorActivity;
 import com.hanyasoftware.android.smartassistedmotor.pengaturan.PengaturanActivity;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.karumi.dexter.listener.single.PermissionListener;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
 
-    private int jarakTempuhKm;
     private MainViewModel mainViewModel;
     private Jarak jarak;
 
@@ -64,12 +77,66 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setTitle("Smart Assisted Motor");
         }
 
+        Dexter.withActivity(this)
+                .withPermissions(
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        if (report.areAllPermissionsGranted()) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                checkExternalStoragePermission();
+                            } else {
+                                permissionGranted();
+                            }
+                        } else if (report.isAnyPermissionPermanentlyDenied()) {
+                            Toast.makeText(MainActivity.this, "Izinkan semua permission untuk menggunakan aplikasi ini!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+
+                    }
+                }).check();
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void checkExternalStoragePermission() {
+        Dexter.withActivity(this)
+                .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+                        permissionGranted();
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+                        Toast.makeText(MainActivity.this, "Izinkan semua permission untuk menggunakan aplikasi ini!", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+
+                    }
+                }).check();
+
+    }
+
+    private void permissionGranted() {
         jarak = new Jarak();
         mainViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getMainViewModelFactory())
                 .get(MainViewModel.class);
         mainViewModel.getJarak().observe(this, jarak1 -> {
             jarak = jarak1;
-            jarakTempuh.setText(jarak.getJarak());
+            if (jarak.getJarak() == null || jarak.getJarak().isEmpty()) {
+                jarakTempuh.setText("0");
+            } else {
+                jarakTempuh.setText(jarak.getJarak());
+            }
         });
 
         // motor on click
@@ -89,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
 
         // exit on click
         exitContainer.setOnClickListener(v -> exitOnClick());
-
     }
 
     private void motorOnClick() {

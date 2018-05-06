@@ -76,30 +76,11 @@ public class BengkelActivity extends AppCompatActivity {
         bengkelViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getBengkelViewModelFactory())
                 .get(BengkelViewModel.class);
 
-        Dexter.withActivity(this)
-                .withPermissions(
-                        Manifest.permission.ACCESS_COARSE_LOCATION,
-                        Manifest.permission.ACCESS_FINE_LOCATION)
-                .withListener(new MultiplePermissionsListener() {
-                    @SuppressLint("MissingPermission")
-                    @Override
-                    public void onPermissionsChecked(MultiplePermissionsReport report) {
-                        if (report.areAllPermissionsGranted()) {
-                            flagGps = showGpsStatus();
-                            if (flagGps) {
-                                // get location and fetch bengkel
-                                getLocation(BengkelActivity.this);
-                            } else {
-                                Toast.makeText(BengkelActivity.this, "GPS Harus Aktif!", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
-
-                    }
-                }).check();
+        flagGps = showGpsStatus();
+        if (flagGps) {
+            // get location and fetch bengkel
+            getLocation(BengkelActivity.this);
+        }
 
     }
 
