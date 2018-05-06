@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
             empty = validateEmptyString(username, password);
 
-            if (!empty) {
+            if (empty) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

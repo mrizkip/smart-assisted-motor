@@ -2,10 +2,13 @@ package com.hanyasoftware.android.smartassistedmotor.guest;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -24,10 +27,13 @@ import butterknife.ButterKnife;
 
 public class GuestActivity extends AppCompatActivity {
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.guest_spinnerMotor)
     Spinner spinnerMotor;
     @BindView(R.id.guest_recyclerView)
     RecyclerView recyclerView;
+    ActionBar actionBar;
 
     private List<GuestAdapter> cb150rAdapters;
     private List<GuestAdapter> motor2Adapters;
@@ -41,6 +47,13 @@ public class GuestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_guest);
 
         ButterKnife.bind(this);
+
+        if (toolbar != null) setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            actionBar = getSupportActionBar();
+            actionBar.setTitle("Guest");
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         cb150rAdapters = new ArrayList<>();
         motor2Adapters = new ArrayList<>();
@@ -81,6 +94,15 @@ public class GuestActivity extends AppCompatActivity {
             return true;
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initAdapter() {

@@ -5,6 +5,7 @@ import com.hanyasoftware.android.smartassistedmotor.di.module.DataModule;
 import com.hanyasoftware.android.smartassistedmotor.main.MainViewModel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.BengkelRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.JarakRepository;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
 
 import javax.inject.Singleton;
 
@@ -21,5 +22,7 @@ public interface IDataComponent {
     BengkelRepository getBengkelRepository();
 
     BengkelViewModel.BengkelViewModelFactory getBengkelViewModelFactory();
+
+    SharedPrefsRepository getSharedPrefsRepository();
 
 }

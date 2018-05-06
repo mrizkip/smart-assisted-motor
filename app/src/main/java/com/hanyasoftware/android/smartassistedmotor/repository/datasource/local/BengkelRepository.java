@@ -1,5 +1,9 @@
 package com.hanyasoftware.android.smartassistedmotor.repository.datasource.local;
 
+import android.location.Location;
+import android.location.LocationListener;
+import android.os.Bundle;
+
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchBengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.Bengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.transformer.BengkelResponseToBengkel;
@@ -23,9 +27,7 @@ public class BengkelRepository {
         this.bengkelResponseToBengkel = bengkelResponseToBengkel;
     }
 
-    public Observable<List<Bengkel>> fetchBengkel() {
-        String latitude = "";
-        String longitude = "";
+    public Observable<List<Bengkel>> fetchBengkel(String latitude, String longitude) {
         String radius = "3";
         return iFetchBengkel.fetchBengkelBukaWithRadius(latitude, longitude, radius)
                 .toObservable()
@@ -33,4 +35,5 @@ public class BengkelRepository {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
 }

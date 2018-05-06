@@ -6,6 +6,7 @@ import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IF
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchJarak;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.BengkelRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.JarakRepository;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.transformer.BengkelResponseToBengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.transformer.JarakResponseToJarak;
 
@@ -93,5 +94,11 @@ public class DataModule {
     @Singleton
     public BengkelRepository provideBengkelRepository(IFetchBengkel iFetchBengkel, BengkelResponseToBengkel bengkelResponseToBengkel) {
         return new BengkelRepository(iFetchBengkel, bengkelResponseToBengkel);
+    }
+
+    @Provides
+    @Singleton
+    public SharedPrefsRepository provideSharedPrefsRepository() {
+        return new SharedPrefsRepository();
     }
 }

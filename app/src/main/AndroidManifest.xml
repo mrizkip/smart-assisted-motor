@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".SAMApplication"
@@ -15,13 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".motor.MotorActivity" />
         <activity android:name=".diagnosis.DiagnosisActivity" />
         <activity android:name=".bengkel.BengkelActivity" />
@@ -32,8 +27,15 @@
         <activity android:name=".guest.DetailGuestActivity" />
         <activity android:name=".pengaturan.PengaturanAlarmActivity" />
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".main.SplashScreenActivity" />
-        <activity android:name=".pengaturan.PengaturanSuaraActivity"></activity>
+        <activity android:name=".main.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".pengaturan.PengaturanSuaraActivity" />
+        <activity android:name=".pengaturan.TambahMotorActivity"></activity>
     </application>
 
 </manifest>

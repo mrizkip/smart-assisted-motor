@@ -1,15 +1,24 @@
 package com.hanyasoftware.android.smartassistedmotor.pengaturan;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
 import com.hanyasoftware.android.smartassistedmotor.guest.GuestActivity;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,8 +31,6 @@ public class PengaturanActivity extends AppCompatActivity {
     TextView motor;
     @BindView(R.id.pengaturan_suara)
     TextView suara;
-    @BindView(R.id.pengaturan_guest)
-    TextView guest;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     ActionBar actionBar;
@@ -51,8 +58,6 @@ public class PengaturanActivity extends AppCompatActivity {
         // motor on click
         motor.setOnClickListener(v -> motorOnClick());
 
-        // guest on click
-        guest.setOnClickListener(v -> guestOnCLick());
     }
 
     private void alarmOnClick() {
@@ -61,15 +66,12 @@ public class PengaturanActivity extends AppCompatActivity {
     }
 
     private void suaraOnClick() {
-
+        Intent intent = new Intent(PengaturanActivity.this, PengaturanSuaraActivity.class);
+        startActivity(intent);
     }
 
     private void motorOnClick() {
-
-    }
-
-    private void guestOnCLick() {
-        Intent intent = new Intent(PengaturanActivity.this, GuestActivity.class);
+        Intent intent = new Intent(PengaturanActivity.this, TambahMotorActivity.class);
         startActivity(intent);
     }
 
