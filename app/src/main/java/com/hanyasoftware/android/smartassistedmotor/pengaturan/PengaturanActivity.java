@@ -57,15 +57,12 @@ public class PengaturanActivity extends AppCompatActivity {
     }
 
     private void suaraOnClick() {
-
+        Intent intent = new Intent(PengaturanActivity.this, PengaturanSuaraActivity.class);
+        startActivity(intent);
     }
 
     private void motorOnClick() {
-
-    }
-
-    private void guestOnCLick() {
-        Intent intent = new Intent(PengaturanActivity.this, GuestActivity.class);
+        Intent intent = new Intent(PengaturanActivity.this, TambahMotorActivity.class);
         startActivity(intent);
     }
 

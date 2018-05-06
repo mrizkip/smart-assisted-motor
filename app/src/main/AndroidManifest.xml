@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity"/>
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".motor.MotorActivity" />
         <activity android:name=".diagnosis.DiagnosisActivity" />
         <activity android:name=".bengkel.BengkelActivity" />
@@ -29,10 +29,12 @@
         <activity android:name=".main.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pengaturan.PengaturanSuaraActivity"/>
+        <activity android:name=".pengaturan.PengaturanSuaraActivity" />
+        <activity android:name=".pengaturan.TambahMotorActivity"></activity>
     </application>
 
 </manifest>
