@@ -1,6 +1,7 @@
 package com.hanyasoftware.android.smartassistedmotor.repository.datasource.api;
 
 import com.hanyasoftware.android.smartassistedmotor.repository.entity.api.BengkelResponse;
+import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.Bengkel;
 
 import java.util.List;
 

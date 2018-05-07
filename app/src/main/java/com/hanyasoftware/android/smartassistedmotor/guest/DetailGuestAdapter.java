@@ -11,6 +11,7 @@ import com.mikepenz.fastadapter.items.AbstractItem;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DetailGuestAdapter extends AbstractItem<DetailGuestAdapter, DetailGuestAdapter.ViewHolder> {
 
@@ -61,6 +62,7 @@ public class DetailGuestAdapter extends AbstractItem<DetailGuestAdapter, DetailG
 
         public ViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         @Override
