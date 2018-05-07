@@ -1,7 +1,6 @@
 package com.hanyasoftware.android.smartassistedmotor.guest;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,12 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
-import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
-import com.mikepenz.fastadapter.listeners.OnClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +32,7 @@ public class GuestActivity extends AppCompatActivity {
     ActionBar actionBar;
 
     private List<GuestAdapter> cb150rAdapters;
-    private List<GuestAdapter> motor2Adapters;
+    private List<GuestAdapter> vario125Adapters;
     private FastItemAdapter<GuestAdapter> fastItemAdapter;
 
     private String motor;
@@ -56,7 +52,7 @@ public class GuestActivity extends AppCompatActivity {
         }
 
         cb150rAdapters = new ArrayList<>();
-        motor2Adapters = new ArrayList<>();
+        vario125Adapters = new ArrayList<>();
         fastItemAdapter = new FastItemAdapter<>();
 
         initAdapter();
@@ -72,8 +68,8 @@ public class GuestActivity extends AppCompatActivity {
                 if (motor.equalsIgnoreCase("CB 150R")) {
                     fastItemAdapter.set(cb150rAdapters);
                     fastItemAdapter.notifyAdapterDataSetChanged();
-                } else {
-                    fastItemAdapter.set(motor2Adapters);
+                } else if (motor.equalsIgnoreCase("Vario 125")){
+                    fastItemAdapter.set(vario125Adapters);
                     fastItemAdapter.notifyAdapterDataSetChanged();
                 }
             }
@@ -137,19 +133,19 @@ public class GuestActivity extends AppCompatActivity {
         cb150rAdapters.add(km48);
         cb150rAdapters.add(km54);
 
-        motor2Adapters.add(km1);
-        motor2Adapters.add(km4);
-        motor2Adapters.add(km8);
-        motor2Adapters.add(km12);
-        motor2Adapters.add(km16);
-        motor2Adapters.add(km20);
-        motor2Adapters.add(km24);
-        motor2Adapters.add(km28);
-        motor2Adapters.add(km32);
-        motor2Adapters.add(km36);
-        motor2Adapters.add(km40);
-        motor2Adapters.add(km44);
-        motor2Adapters.add(km48);
-        motor2Adapters.add(km52);
+        vario125Adapters.add(km1);
+        vario125Adapters.add(km4);
+        vario125Adapters.add(km8);
+        vario125Adapters.add(km12);
+        vario125Adapters.add(km16);
+        vario125Adapters.add(km20);
+        vario125Adapters.add(km24);
+        vario125Adapters.add(km28);
+        vario125Adapters.add(km32);
+        vario125Adapters.add(km36);
+        vario125Adapters.add(km40);
+        vario125Adapters.add(km44);
+        vario125Adapters.add(km48);
+        vario125Adapters.add(km52);
     }
 }
