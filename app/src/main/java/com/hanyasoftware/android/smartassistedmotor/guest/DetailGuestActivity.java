@@ -71,14 +71,19 @@ public class DetailGuestActivity extends AppCompatActivity {
             keyCb150r.setMotor(motor);
             keyCb150r.setKilometer(kilometer);
             if (mapTabelCb150r.containsKey(keyCb150r)) {
+                detailGuestAdapters.clear();
                 detailGuestAdapters = mapTabelCb150r.get(keyCb150r);
             }
         } else if (motor.equalsIgnoreCase("Vario 125")) {
             keyVario125.setMotor(motor);
             keyVario125.setKilometer(kilometer);
+            if (mapTabelVario125.containsKey(keyVario125)) {
+                detailGuestAdapters.clear();
+                detailGuestAdapters = mapTabelVario125.get(keyVario125);
+            }
         }
 
-        if (!detailGuestAdapters.isEmpty()) {
+        if (detailGuestAdapters != null && !detailGuestAdapters.isEmpty()) {
             fastItemAdapter.set(detailGuestAdapters);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(fastItemAdapter);
@@ -92,7 +97,8 @@ public class DetailGuestActivity extends AppCompatActivity {
     }
 
     private void initTableVario125() {
-
+        TabelVario125 tabelVario125 = new TabelVario125();
+        mapTabelVario125 = tabelVario125.getMapTableVario125();
     }
 
     @Override
