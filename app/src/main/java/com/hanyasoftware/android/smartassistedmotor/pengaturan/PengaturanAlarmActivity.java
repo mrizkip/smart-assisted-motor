@@ -11,6 +11,8 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
+import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +29,10 @@ public class PengaturanAlarmActivity extends AppCompatActivity {
     Button buttonSimpan;
 
     ActionBar actionBar;
+    
+    private String spinnerValue = "0";
+    private SharedPrefsRepository sharedPrefsRepository;
+    private boolean switchState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +47,23 @@ public class PengaturanAlarmActivity extends AppCompatActivity {
             actionBar.setTitle("Pengaturan Alarm");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        sharedPrefsRepository = SAMApplication.getDataComponent().getSharedPrefsRepository();
+
+        switchState = sharedPrefsRepository.getSwitchState();
+        alarmSwitch.setChecked(switchState);
+
+        alarmSwitch.setOnCheckedChangeListener((compoundButton, b) -> {
+            switchState = b;
+        });
+
+        // TODO set spinner value at position
 
         buttonSimpan.setOnClickListener(v -> {
+            spinnerValue = alarmSpinner.getSelectedItem().toString();
+            spinnerValue = spinnerValue.replace(" Km", "");
+            int jarak = Integer.parseInt(spinnerValue);
+            sharedPrefsRepository.saveJarakToPrefs(jarak);
+            sharedPrefsRepository.saveSwitchState(switchState);
             Toast.makeText(this, "Pengaturan berhasil disimpan", Toast.LENGTH_SHORT).show();
             finish();
         });
