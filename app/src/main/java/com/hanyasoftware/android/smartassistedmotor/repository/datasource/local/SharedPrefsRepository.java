@@ -12,6 +12,7 @@ public class SharedPrefsRepository {
     public static final String APP_SHARED_PREFS = "APP_SHARED_PREFS";
 
     private static final String USER_LOGGED_IN = "USER_LOGGED_IN";
+    private static final String SWITCH_STATE = "SWITCH_STATE";
     private static final String JARAK_BEFORE_TARGET = "JARAK_BEFORE_TARGET";
     private static final String RINGTONE_URI = "RINGTONE_URI";
     private static final String RINGTONE_NAME = "RINGTONE_NAME";
@@ -46,6 +47,15 @@ public class SharedPrefsRepository {
     public void unsetUserFromPrefs() {
         editor.remove(USER_LOGGED_IN);
         editor.apply();
+    }
+
+    public void saveSwitchState(boolean state) {
+        editor.putBoolean(SWITCH_STATE, state);
+        editor.apply();
+    }
+
+    public boolean getSwitchState() {
+        return sharedPrefs.getBoolean(SWITCH_STATE, false);
     }
 
     public void saveJarakToPrefs(int jarak) {
