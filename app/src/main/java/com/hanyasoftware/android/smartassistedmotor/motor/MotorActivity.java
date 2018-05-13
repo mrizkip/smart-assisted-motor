@@ -44,7 +44,7 @@ public class MotorActivity extends AppCompatActivity {
         }
 
         // Get motor here
-        Motor motor1 = new Motor(1, "N 1234 AB", "Bebek 125", "2018", "150 cc", "17");
+        Motor motor1 = new Motor(1, "N 1234 AB", "CB 150 R", "2018", "150 cc", "17");
 
         // set text view
         nopol.setText(motor1.getNopol());

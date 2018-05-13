@@ -62,7 +62,7 @@
                 android:layout_toRightOf="@id/diagnosis_textJarakTempuh"
                 android:layout_toStartOf="@id/diagnosis_jarakKm"
                 android:gravity="right"
-                android:text="10.000"
+                android:text="0"
                 android:textColor="#c40000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Diagnosis pada jarak 10.000 km"
+                android:text="Diagnosis pada jarak 0 km"
                 android:textColor="@color/primaryText"
                 android:textSize="16sp" />
 
@@ -97,45 +97,13 @@
                 android:layout_height="1dp"
                 android:background="@drawable/line_divider" />
 
-            <TextView
-                android:id="@+id/diagnosis_textDiagnosis1"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/diagnosis_recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="10dp"
-                android:text="1. Ganti Oli Mesin"
-                android:textColor="@color/primaryText"
-                android:textSize="16sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/line_divider" />
-
-            <TextView
-                android:id="@+id/diagnosis_textDiagnosis2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:text="2. Ganti V-Belt"
-                android:textColor="@color/primaryText"
-                android:textSize="16sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/line_divider" />
-
-            <TextView
-                android:id="@+id/diagnosis_textDiagnosis3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:text="3. Cek / Ganti Busi"
-                android:textColor="@color/primaryText"
-                android:textSize="16sp" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                />
 
             <View
                 android:layout_width="match_parent"
@@ -146,7 +114,9 @@
                 android:id="@+id/diagnosis_buttonPrediksi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:text="Prediksi Biaya"
                 android:textSize="16sp"
                 android:textColor="#FFFFFF"
