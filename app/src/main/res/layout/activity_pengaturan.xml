@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context="com.hanyasoftware.android.smartassistedmotor.PengaturanActivity">
+    tools:context="com.hanyasoftware.android.smartassistedmotor.pengaturan.PengaturanActivity">
 
     <include layout="@layout/view_toolbar" />
 
@@ -45,6 +45,8 @@
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/ic_navigate_next_black_24dp"
             android:gravity="center_vertical"
+            android:background="?android:selectableItemBackground"
+            android:paddingLeft="5dp"
             />
 
         <View
@@ -64,6 +66,8 @@
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/ic_navigate_next_black_24dp"
             android:gravity="center_vertical"
+            android:background="?android:selectableItemBackground"
+            android:paddingLeft="5dp"
             />
 
         <View
@@ -83,12 +87,8 @@
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/ic_navigate_next_black_24dp"
             android:gravity="center_vertical"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@drawable/line_divider"
+            android:background="?android:selectableItemBackground"
+            android:paddingLeft="5dp"
             />
 
     </LinearLayout>

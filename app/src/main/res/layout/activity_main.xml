@@ -1,30 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hanyasoftware.android.smartassistedmotor.MainActivity">
+    tools:context="com.hanyasoftware.android.smartassistedmotor.main.MainActivity">
 
-    <include layout="@layout/view_toolbar" />
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/view_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/main_logo"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_below="@id/toolbar"
         android:layout_margin="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
         android:src="@drawable/ic_logo_flat_black"
-        android:tint="@color/colorPrimaryDark" />
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_toolbar" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/main_cardViewJarakTempuh"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_below="@id/main_logo"
-        >
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_logo">
 
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/main_layoutTextJarak"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,289 +55,345 @@
                 android:id="@+id/main_textJarakTempuh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:text="JARAK TERCAPAI: "
                 android:textColor="@color/primaryText"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/main_jarakKm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:text=" KM"
                 android:textColor="@color/primaryText"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/main_jarakTempuh"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/main_textJarakTempuh"
-                android:layout_toLeftOf="@id/main_jarakKm"
-                android:layout_toRightOf="@id/main_textJarakTempuh"
-                android:layout_toStartOf="@id/main_jarakKm"
                 android:gravity="right"
-                android:text="10.000"
+                android:text="0"
                 android:textColor="#c40000"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/main_jarakKm"
+                app:layout_constraintLeft_toRightOf="@id/main_textJarakTempuh"
+                app:layout_constraintRight_toLeftOf="@id/main_jarakKm"
+                app:layout_constraintStart_toEndOf="@id/main_textJarakTempuh"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-        </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 
 
-    <RelativeLayout
-        android:id="@+id/main_layoutBottom"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/main_cardViewJarakTempuh"
-        android:layout_marginTop="10dp">
+    <android.support.v7.widget.CardView
+        android:id="@+id/main_cardMotor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_cardBengkel"
+        app:layout_constraintEnd_toStartOf="@+id/main_cardDiagnosis"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_cardViewJarakTempuh">
 
-        <Space
-            android:id="@+id/main_centerPosition"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_centerInParent="true" />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/main_motorContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:selectableItemBackground"
+            android:padding="12dp">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/main_cardMotor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toLeftOf="@id/main_centerPosition">
+            <ImageView
+                android:id="@+id/main_motorIcon"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:paddingBottom="10dp"
+                android:src="@drawable/ic_motor_black"
+                app:layout_constraintBottom_toTopOf="@+id/main_motorString"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <RelativeLayout
-                android:id="@+id/main_motorContainer"
+            <TextView
+                android:id="@+id/main_motorString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
-                android:padding="12dp">
+                android:text="MOTOR"
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_motorIcon" />
 
-                <ImageView
-                    android:id="@+id/main_motorIcon"
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_centerHorizontal="true"
-                    android:paddingBottom="10dp"
-                    android:src="@drawable/ic_motor_black" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:id="@+id/main_motorString"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/main_motorIcon"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/primaryText"
-                    android:textSize="18sp"
-                    tools:text="MOTOR" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/main_cardDiagnosis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_cardRiwayat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_cardMotor"
+        app:layout_constraintTop_toBottomOf="@+id/main_cardViewJarakTempuh">
 
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/main_diagnosisContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:selectableItemBackground"
+            android:padding="12dp">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/main_cardDiagnosis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_toRightOf="@id/main_centerPosition">
+            <ImageView
+                android:id="@+id/main_diagnosisIcon"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_note_pen_black"
+                app:layout_constraintBottom_toTopOf="@+id/main_diagnosisString"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <RelativeLayout
-                android:id="@+id/main_diagnosisContainer"
+            <TextView
+                android:id="@+id/main_diagnosisString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="DIAGNOSIS"
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_diagnosisIcon" />
 
-                android:background="?android:selectableItemBackground"
-                android:padding="12dp">
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/main_diagnosisIcon"
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_centerHorizontal="true"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_note_pen_black" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/main_cardBengkel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_cardMotor"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_cardPengaturan"
+        app:layout_constraintEnd_toStartOf="@+id/main_cardRiwayat"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_cardMotor"
+        app:layout_constraintVertical_chainStyle="spread">
 
-                <TextView
-                    android:id="@+id/main_diagnosisString"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/main_diagnosisIcon"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/primaryText"
-                    android:textSize="18sp"
-                    tools:text="DIAGNOSIS" />
-
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/main_cardBengkel"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/main_bengkelContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/main_cardMotor"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@id/main_centerPosition">
+            android:background="?android:selectableItemBackground"
+            android:padding="12dp">
 
-            <RelativeLayout
-                android:id="@+id/main_bengkelContainer"
+            <ImageView
+                android:id="@+id/main_bengkelIcon"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:paddingBottom="10dp"
+                android:src="@drawable/ic_map_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/main_bengkelString"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/main_bengkelString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
-                android:padding="12dp">
+                android:gravity="center_horizontal"
+                android:text="BENGKEL\nTERDEKAT"
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_bengkelIcon" />
 
-                <ImageView
-                    android:id="@+id/main_bengkelIcon"
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_centerHorizontal="true"
-                    android:paddingBottom="10dp"
-                    android:src="@drawable/ic_map_black_24dp" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:id="@+id/main_bengkelString"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/main_bengkelIcon"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/primaryText"
-                    android:textSize="18sp"
-                    tools:text="BENGKEL TERDEKAT"
-                    android:gravity="center_horizontal"
-                    />
+    <android.support.v7.widget.CardView
+        android:id="@+id/main_cardRiwayat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_cardDiagnosis"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_riwayatExit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@+id/main_cardBengkel"
+        app:layout_constraintTop_toBottomOf="@+id/main_cardDiagnosis">
 
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/main_cardRiwayat"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/main_riwayatContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/main_cardDiagnosis"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/main_centerPosition">
 
-            <RelativeLayout
-                android:id="@+id/main_riwayatContainer"
+            android:background="?android:selectableItemBackground"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/main_riwayatIcon"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_history_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/main_riwayatString"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/main_riwayatString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="RIWAYAT\nSERVICE"
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_riwayatIcon" />
 
-                android:background="?android:selectableItemBackground"
-                android:padding="12dp">
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/main_riwayatIcon"
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_centerHorizontal="true"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_history_black_24dp" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/main_cardPengaturan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/main_cardBengkel"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/main_riwayatExit"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_cardBengkel">
 
-                <TextView
-                    android:id="@+id/main_riwayatString"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/main_riwayatIcon"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/primaryText"
-                    android:textSize="18sp"
-                    tools:text="RIWAYAT  SERVICE"
-                    android:gravity="center_horizontal"
-                    />
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/main_pengaturanContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:selectableItemBackground"
+            android:padding="12dp">
 
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+            <ImageView
+                android:id="@+id/main_pengaturanIcon"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_settings_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/main_pengaturanString"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/main_cardPengaturan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main_cardBengkel"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_toLeftOf="@id/main_centerPosition">
-
-            <RelativeLayout
-                android:id="@+id/main_pengaturanContainer"
+            <TextView
+                android:id="@+id/main_pengaturanString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
-                android:padding="12dp">
+                android:text="PENGATURAN"
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_pengaturanIcon" />
 
-                <ImageView
-                    android:id="@+id/main_pengaturanIcon"
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:layout_centerHorizontal="true"
-                    android:padding="5dp"
-                    android:src="@drawable/ic_settings_black_24dp" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:id="@+id/main_pengaturanString"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/main_pengaturanIcon"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/primaryText"
-                    android:textSize="18sp"
-                    tools:text="PENGATURAN" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/main_riwayatExit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/main_cardRiwayat"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_cardPengaturan"
+        app:layout_constraintTop_toBottomOf="@+id/main_cardRiwayat">
 
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/main_exitContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/main_riwayatExit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/main_cardRiwayat"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/main_centerPosition">
+            android:background="?android:selectableItemBackground"
+            android:padding="12dp">
 
-            <RelativeLayout
-                android:id="@+id/main_exitContainer"
+            <ImageView
+                android:id="@+id/main_exitIcon"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_exit_to_app_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/main_exitString"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/main_exitString"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="KELUAR"
+                android:textColor="@color/primaryText"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/main_exitIcon" />
 
-                android:background="?android:selectableItemBackground"
-                android:padding="12dp">
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-                <ImageView
-                    android:id="@+id/main_exitIcon"
-                    android:layout_width="match_parent"
-                    android:layout_height="68dp"
-                    android:padding="2dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_exit_to_app_black_24dp" />
-
-                <TextView
-                    android:id="@+id/main_exitString"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/main_exitIcon"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/primaryText"
-                    android:textSize="18sp"
-                    tools:text="KELUAR" />
-
-            </RelativeLayout>
-        </android.support.v7.widget.CardView>
-
-    </RelativeLayout>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

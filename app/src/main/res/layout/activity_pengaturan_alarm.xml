@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pengaturan.PengaturanAlarmActivity"
+    android:background="#FFFFFF"
+    >
+
+    <include layout="@layout/view_toolbar" />
+
+    <TextView
+        android:id="@+id/alarm_textNotif"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Notifikasi"
+        android:textColor="@color/primaryText"
+        android:textSize="16sp"
+        android:layout_below="@id/toolbar"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_toLeftOf="@id/alarm_switchNotif"
+        />
+
+    <Switch
+        android:id="@+id/alarm_switchNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        />
+
+    <View
+        android:id="@+id/alarm_divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/alarm_textNotif"
+        android:background="@drawable/line_divider"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
+
+    <TextView
+        android:id="@+id/alarm_textKm"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/alarm_divider1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@id/alarm_spinnerKm"
+        android:text="Notifikasi sebelum jarak target"
+        android:textSize="16sp"
+        android:textColor="@color/primaryText"
+        android:gravity="center_vertical"
+        />
+
+    <Spinner
+        android:id="@+id/alarm_spinnerKm"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:entries="@array/kilometer"
+        android:gravity="end"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/alarm_switchNotif"
+        />
+
+    <Button
+        android:id="@+id/alarm_buttonSimpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Simpan"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        />
+
+
+</RelativeLayout>
