@@ -35,7 +35,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".pengaturan.PengaturanSuaraActivity" />
-        <activity android:name=".pengaturan.TambahMotorActivity"></activity>
+        <activity android:name=".pengaturan.TambahMotorActivity" />
+        <activity android:name=".register.RegisterActivity"></activity>
     </application>
 
 </manifest>

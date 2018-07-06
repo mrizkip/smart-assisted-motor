@@ -6,6 +6,7 @@ import com.hanyasoftware.android.smartassistedmotor.login.LoginViewModel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchBengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchJarak;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.ILogin;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IRegister;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.BengkelRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.JarakRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
@@ -111,7 +112,12 @@ public class DataModule {
     }
 
     @Provides
-    public UserRepository provideUserRepository(ILogin iLogin) {
-        return new UserRepository(iLogin);
+    public IRegister provideIRegister(Retrofit retrofit) {
+        return retrofit.create(IRegister.class);
+    }
+
+    @Provides
+    public UserRepository provideUserRepository(ILogin iLogin, IRegister iRegister) {
+        return new UserRepository(iLogin, iRegister);
     }
 }
