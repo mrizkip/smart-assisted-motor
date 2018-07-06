@@ -1,12 +1,15 @@
 package com.hanyasoftware.android.smartassistedmotor.login;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
+import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
 import com.hanyasoftware.android.smartassistedmotor.guest.GuestActivity;
 import com.hanyasoftware.android.smartassistedmotor.main.MainActivity;
 
@@ -27,7 +30,9 @@ public class LoginActivity extends AppCompatActivity {
     private String username;
     private String password;
 
-    private boolean empty;
+    private boolean valid;
+
+    private LoginViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +41,29 @@ public class LoginActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        loginViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getLoginViewModelFactory())
+                .get(LoginViewModel.class);
+
         btnLogin.setOnClickListener(v -> {
             username = tvEmail.getText().toString().trim();
             password = tvPassword.getText().toString().trim();
 
-            empty = validateEmptyString(username, password);
+            valid = validateEmptyString(username, password);
 
-            if (empty) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+            if (valid) {
+                loginViewModel.login(username, password).observe(this, loginStatus -> {
+                    if (loginStatus != null) {
+                        if (loginStatus) {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } {
+                            Toast.makeText(this, "Login Gagal!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(this, "Login Gagal!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
