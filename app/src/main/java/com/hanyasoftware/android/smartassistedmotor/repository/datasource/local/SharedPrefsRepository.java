@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
+import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.User;
 
 import javax.inject.Inject;
 
@@ -11,14 +12,16 @@ public class SharedPrefsRepository {
 
     public static final String APP_SHARED_PREFS = "APP_SHARED_PREFS";
 
-    private static final String USER_LOGGED_IN = "USER_LOGGED_IN";
+    private static final String USER_ID = "USER_ID";
+
     private static final String SWITCH_STATE = "SWITCH_STATE";
     private static final String JARAK_BEFORE_TARGET = "JARAK_BEFORE_TARGET";
     private static final String RINGTONE_URI = "RINGTONE_URI";
     private static final String RINGTONE_NAME = "RINGTONE_NAME";
 
-    private static final String UNAVAILABLE_VALUE = "Unavailable";
+    private static final String UNAVAILABLE_VALUE = "UNAVAILABLE";
     private static final int DEFAULT_JARAK = 10;
+
 
     private final Context context;
     private final SharedPreferences sharedPrefs;
@@ -31,21 +34,23 @@ public class SharedPrefsRepository {
         editor = sharedPrefs.edit();
     }
 
-    public void saveUserToPrefs(String username) {
-        editor.putString(USER_LOGGED_IN, username);
+    public void saveUserToPrefs(User user) {
+        editor.putString(USER_ID, user.getUsr_id());
         editor.apply();
     }
 
-    public String getUserFromPrefs() {
-        String username = sharedPrefs.getString(USER_LOGGED_IN, UNAVAILABLE_VALUE);
-        if (username.equalsIgnoreCase(UNAVAILABLE_VALUE)) {
+    public User getUserFromPrefs() {
+        String userId = sharedPrefs.getString(USER_ID, UNAVAILABLE_VALUE);
+        if (USER_ID.equalsIgnoreCase(UNAVAILABLE_VALUE)) {
             return null;
         }
-        return username;
+        User user = new User();
+        user.setUsr_id(userId);
+        return user;
     }
 
     public void unsetUserFromPrefs() {
-        editor.remove(USER_LOGGED_IN);
+        editor.remove(USER_ID);
         editor.apply();
     }
 

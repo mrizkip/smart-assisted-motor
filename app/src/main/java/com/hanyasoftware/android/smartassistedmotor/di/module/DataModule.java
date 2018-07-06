@@ -2,11 +2,14 @@ package com.hanyasoftware.android.smartassistedmotor.di.module;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hanyasoftware.android.smartassistedmotor.login.LoginViewModel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchBengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchJarak;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.ILogin;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.BengkelRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.JarakRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.UserRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.transformer.BengkelResponseToBengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.transformer.JarakResponseToJarak;
 
@@ -100,5 +103,15 @@ public class DataModule {
     @Singleton
     public SharedPrefsRepository provideSharedPrefsRepository() {
         return new SharedPrefsRepository();
+    }
+
+    @Provides
+    public ILogin provideILogin(Retrofit retrofit) {
+        return retrofit.create(ILogin.class);
+    }
+
+    @Provides
+    public UserRepository provideUserRepository(ILogin iLogin) {
+        return new UserRepository(iLogin);
     }
 }
