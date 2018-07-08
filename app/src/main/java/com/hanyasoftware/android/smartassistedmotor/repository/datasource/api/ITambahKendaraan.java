@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 public interface ITambahKendaraan {
 
     @FormUrlEncoded
-    @POST
+    @POST("api/registerkendaraan")
     Single<TambahKendaraanResponse> tambahKendaraan(@Field("iduser") String idUser, @Field("nopol") String nopol,
                                                     @Field("pemilik") String pemilik, @Field("tipe") String tipe,
                                                     @Field("tahun") String tahun, @Field("lcmesin") String lcmesin,
