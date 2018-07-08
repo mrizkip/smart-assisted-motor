@@ -86,6 +86,11 @@ public class TambahMotorActivity extends AppCompatActivity {
         String lcMesin = edtLcMesin.getText().toString().trim();
         String ukuranRoda = edtUkuranRoda.getText().toString().trim();
         String tipe = spnTipe.getSelectedItem().toString();
+        if (tipe.equalsIgnoreCase("CB 150R")) {
+            tipe = "cb150r";
+        } else if (tipe.equalsIgnoreCase("Vario 125")) {
+            tipe = "vario125";
+        }
 
         boolean isEmptyField = false;
         if (TextUtils.isEmpty(nopol)) {

@@ -5,10 +5,12 @@ import com.hanyasoftware.android.smartassistedmotor.di.module.DataModule;
 import com.hanyasoftware.android.smartassistedmotor.login.LoginViewModel;
 import com.hanyasoftware.android.smartassistedmotor.main.MainViewModel;
 import com.hanyasoftware.android.smartassistedmotor.pengaturan.TambahKendaraanViewModel;
+import com.hanyasoftware.android.smartassistedmotor.pilihmotor.PilihMotorViewModel;
 import com.hanyasoftware.android.smartassistedmotor.register.RegisterViewModel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.BengkelRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.JarakRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.KendaraanRepository;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.ServisRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.UserRepository;
 
@@ -39,5 +41,9 @@ public interface IDataComponent {
     KendaraanRepository getKendaraanRepository();
 
     TambahKendaraanViewModel.TambahKendaraanViewModelFactory getTambahKendaraanViewModelFactory();
+
+    ServisRepository getServisRepository();
+
+    PilihMotorViewModel.PilihMotorViewModelFactory getPilihMotorViewModelFactory();
 
 }

@@ -23,6 +23,7 @@ public class JarakRepository {
         this.jarakResponseToJarak = jarakResponseToJarak;
     }
 
+    // TODO: get kendaraan id from prefs
     public Observable<Jarak> getJarak() {
         String id = "1";
         return iFetchJarak.fetchJarak(id)
