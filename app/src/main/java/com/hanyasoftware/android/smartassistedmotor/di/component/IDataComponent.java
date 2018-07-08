@@ -13,6 +13,7 @@ import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.ServisRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.UserRepository;
+import com.hanyasoftware.android.smartassistedmotor.ubahpassword.UbahPasswordViewModel;
 
 import javax.inject.Singleton;
 
@@ -45,5 +46,7 @@ public interface IDataComponent {
     ServisRepository getServisRepository();
 
     PilihMotorViewModel.PilihMotorViewModelFactory getPilihMotorViewModelFactory();
+
+    UbahPasswordViewModel.UbahPasswordViewModelFactory getUbahPasswordViewModelFactory();
 
 }

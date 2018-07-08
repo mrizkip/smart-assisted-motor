@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
 import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
@@ -92,6 +93,7 @@ public class PilihMotorActivity extends AppCompatActivity {
             kendaraan.setKnd_tipe(item.getTipe());
             kendaraan.setKnd_pemilik(item.getPemilik());
             sharedPrefsRepository.saveKndToPrefs(kendaraan);
+            Toast.makeText(this, "Motor terpilih " + kendaraan.getKnd_tipe(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(PilihMotorActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

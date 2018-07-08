@@ -91,6 +91,46 @@
             android:paddingLeft="5dp"
             />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/line_divider"
+            />
+
+        <TextView
+            android:id="@+id/pengaturan_pilihMotor"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Pilih Motor"
+            android:textColor="@color/primaryText"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_motor_black"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:background="?android:selectableItemBackground"
+            android:paddingLeft="5dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/line_divider" />
+
+        <TextView
+            android:id="@+id/pengaturan_ubahPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?android:selectableItemBackground"
+            android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:text="Ubah Password"
+            android:textColor="@color/primaryText"
+            android:textSize="18sp" />
+
     </LinearLayout>
 
 
