@@ -26,6 +26,8 @@ public class PilihMotorViewModel extends ViewModel {
         this.kendaraanRepository = kendaraanRepository;
         this.listKendaraanLiveData = new MutableLiveData<>();
         this.compositeDisposable = new CompositeDisposable();
+
+        listKendaraan();
     }
 
     private void listKendaraan() {

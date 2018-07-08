@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 jarakTempuh.setText(jarak.getJarak());
 
-                // TODO build notification from every request jarak
+                //  build notification from every request jarak
                 boolean switchState = sharedPrefsRepository.getSwitchState();
                 if (switchState) {
                     int jarakInt = Integer.parseInt(jarak.getJarak());

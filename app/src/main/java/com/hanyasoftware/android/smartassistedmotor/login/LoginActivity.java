@@ -13,6 +13,7 @@ import com.hanyasoftware.android.smartassistedmotor.R;
 import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
 import com.hanyasoftware.android.smartassistedmotor.guest.GuestActivity;
 import com.hanyasoftware.android.smartassistedmotor.main.MainActivity;
+import com.hanyasoftware.android.smartassistedmotor.pilihmotor.PilihMotorActivity;
 import com.hanyasoftware.android.smartassistedmotor.register.RegisterActivity;
 
 import butterknife.BindView;
@@ -59,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (loginStatus != null) {
                         if (loginStatus) {
                             Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, PilihMotorActivity.class);
                             startActivity(intent);
                             finish();
                         } else {

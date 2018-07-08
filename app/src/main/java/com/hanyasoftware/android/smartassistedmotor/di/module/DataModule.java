@@ -97,8 +97,8 @@ public class DataModule {
 
     @Provides
     @Singleton
-    public JarakRepository provideJarakRepository(IFetchJarak iFetchJarak, JarakResponseToJarak jarakResponseToJarak) {
-        return new JarakRepository(iFetchJarak, jarakResponseToJarak);
+    public JarakRepository provideJarakRepository(IFetchJarak iFetchJarak, JarakResponseToJarak jarakResponseToJarak, SharedPrefsRepository sharedPrefsRepository) {
+        return new JarakRepository(iFetchJarak, jarakResponseToJarak, sharedPrefsRepository);
     }
 
     @Provides
