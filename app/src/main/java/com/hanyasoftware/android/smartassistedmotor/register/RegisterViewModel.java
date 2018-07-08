@@ -52,4 +52,12 @@ public class RegisterViewModel extends ViewModel {
             return (T) new RegisterViewModel(userRepository);
         }
     }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        if (!compositeDisposable.isDisposed()) {
+            compositeDisposable.dispose();
+        }
+    }
 }

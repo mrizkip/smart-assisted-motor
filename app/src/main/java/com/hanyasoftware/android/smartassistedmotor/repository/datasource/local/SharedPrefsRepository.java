@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
+import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.Kendaraan;
 import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.User;
 
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ public class SharedPrefsRepository {
     private static final String UNAVAILABLE_VALUE = "UNAVAILABLE";
     private static final int DEFAULT_JARAK = 10;
 
+    private static final String KND_ID = "KND_ID";
 
     private final Context context;
     private final SharedPreferences sharedPrefs;
@@ -92,6 +94,22 @@ public class SharedPrefsRepository {
             return null;
         }
         return name;
+    }
+
+    public void saveKndToPrefs(Kendaraan kendaraan) {
+        String kendaraanId = kendaraan.getKnd_id();
+        editor.putString(KND_ID, kendaraanId);
+        editor.apply();
+    }
+
+    public Kendaraan getKendaraanFromPrefs() {
+        String kendaraanId = sharedPrefs.getString(KND_ID, UNAVAILABLE_VALUE);
+        if (kendaraanId.equalsIgnoreCase(UNAVAILABLE_VALUE)) {
+            return null;
+        }
+        Kendaraan kendaraan = new Kendaraan();
+        kendaraan.setKnd_id(kendaraanId);
+        return kendaraan;
     }
 
 }

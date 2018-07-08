@@ -7,8 +7,10 @@ import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IF
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchJarak;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.ILogin;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IRegister;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.ITambahKendaraan;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.BengkelRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.JarakRepository;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.KendaraanRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.SharedPrefsRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.UserRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.transformer.BengkelResponseToBengkel;
@@ -120,4 +122,15 @@ public class DataModule {
     public UserRepository provideUserRepository(ILogin iLogin, IRegister iRegister) {
         return new UserRepository(iLogin, iRegister);
     }
+
+    @Provides
+    public ITambahKendaraan provideITambahKendaraan(Retrofit retrofit) {
+        return retrofit.create(ITambahKendaraan.class);
+    }
+
+    @Provides
+    public KendaraanRepository provideKendaraanRepository(ITambahKendaraan iTambahKendaraan) {
+        return new KendaraanRepository(iTambahKendaraan);
+    }
+
 }
