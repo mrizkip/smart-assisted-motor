@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/detailGuest_adapter"
+    android:id="@+id/diagnosa_adapter"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/itemDetailGuest_no"
+        android:id="@+id/itemDiagnosa_no"
         android:layout_width="40dp"
         android:layout_height="match_parent"
         android:background="@drawable/border"
@@ -22,7 +22,7 @@
         tools:text="1" />
 
     <TextView
-        android:id="@+id/itemDetailGuest_namaBarang"
+        android:id="@+id/itemDiagnosa_namaBarang"
         android:layout_width="150dp"
         android:layout_height="match_parent"
         android:background="@drawable/border"
@@ -33,7 +33,7 @@
         tools:text="Saluran Bahan Bakar" />
 
     <TextView
-        android:id="@+id/itemDetailGuest_keteranggan"
+        android:id="@+id/itemDiagnosa_keteranggan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/border"

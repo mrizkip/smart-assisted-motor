@@ -2,6 +2,7 @@ package com.hanyasoftware.android.smartassistedmotor.di.component;
 
 import com.hanyasoftware.android.smartassistedmotor.bengkel.BengkelViewModel;
 import com.hanyasoftware.android.smartassistedmotor.di.module.DataModule;
+import com.hanyasoftware.android.smartassistedmotor.diagnosis.DiagnosaViewModel;
 import com.hanyasoftware.android.smartassistedmotor.login.LoginViewModel;
 import com.hanyasoftware.android.smartassistedmotor.main.MainViewModel;
 import com.hanyasoftware.android.smartassistedmotor.motor.MotorViewModel;
@@ -9,6 +10,7 @@ import com.hanyasoftware.android.smartassistedmotor.pengaturan.TambahKendaraanVi
 import com.hanyasoftware.android.smartassistedmotor.pilihmotor.PilihMotorViewModel;
 import com.hanyasoftware.android.smartassistedmotor.register.RegisterViewModel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.BengkelRepository;
+import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.DiagnosaRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.JarakRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.KendaraanRepository;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.local.ServisRepository;
@@ -54,5 +56,9 @@ public interface IDataComponent {
     RiwayatServisViewModel.RiwayatServisViewModelFactory getRiwayatServisViewModelFactory();
 
     MotorViewModel.MotorViewModelFactory getMotorViewModelFactory();
+
+    DiagnosaRepository getDiagnosaRepository();
+
+    DiagnosaViewModel.DiagnosaViewModelFactory getDiagnosaViewModelFactory();
 
 }

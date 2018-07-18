@@ -2,7 +2,6 @@ package com.hanyasoftware.android.smartassistedmotor.di.module;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.hanyasoftware.android.smartassistedmotor.login.LoginViewModel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IDiagnosa;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchBengkel;
 import com.hanyasoftware.android.smartassistedmotor.repository.datasource.api.IFetchJarak;
@@ -195,8 +194,8 @@ public class DataModule {
     }
 
     @Provides
-    public DiagnosaRepository provideDiagnosaRepository(IDiagnosa iDiagnosa) {
-        return new DiagnosaRepository(iDiagnosa);
+    public DiagnosaRepository provideDiagnosaRepository(IDiagnosa iDiagnosa, SharedPrefsRepository sharedPrefsRepository) {
+        return new DiagnosaRepository(iDiagnosa, sharedPrefsRepository);
     }
 
 }

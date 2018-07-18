@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
     private void diagnosisOnClick() {
         Intent intent = new Intent(MainActivity.this, DiagnosisActivity.class);
         String jarakIntent;
-        if (jarak.getJarak() == null || jarak.getJarak().isEmpty()) {
+        if (jarakTempuh.getText().toString().equalsIgnoreCase("0")) {
             jarakIntent = "0";
         } else {
             jarakIntent = jarak.getJarak();
