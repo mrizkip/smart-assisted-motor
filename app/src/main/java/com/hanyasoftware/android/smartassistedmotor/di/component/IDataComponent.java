@@ -4,6 +4,7 @@ import com.hanyasoftware.android.smartassistedmotor.bengkel.BengkelViewModel;
 import com.hanyasoftware.android.smartassistedmotor.di.module.DataModule;
 import com.hanyasoftware.android.smartassistedmotor.login.LoginViewModel;
 import com.hanyasoftware.android.smartassistedmotor.main.MainViewModel;
+import com.hanyasoftware.android.smartassistedmotor.motor.MotorViewModel;
 import com.hanyasoftware.android.smartassistedmotor.pengaturan.TambahKendaraanViewModel;
 import com.hanyasoftware.android.smartassistedmotor.pilihmotor.PilihMotorViewModel;
 import com.hanyasoftware.android.smartassistedmotor.register.RegisterViewModel;
@@ -51,5 +52,7 @@ public interface IDataComponent {
     UbahPasswordViewModel.UbahPasswordViewModelFactory getUbahPasswordViewModelFactory();
 
     RiwayatServisViewModel.RiwayatServisViewModelFactory getRiwayatServisViewModelFactory();
+
+    MotorViewModel.MotorViewModelFactory getMotorViewModelFactory();
 
 }

@@ -71,4 +71,15 @@ public class KendaraanRepository {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    public Observable<Kendaraan> getKendaraan() {
+        String kendaraanId = sharedPrefsRepository.getKendaraanFromPrefs().getKnd_id();
+        return iListKendaraan.getKendaraan(kendaraanId)
+                .toObservable()
+                .map(kendaraanApiToKendaraan::transform)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+
 }

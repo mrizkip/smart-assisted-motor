@@ -1,5 +1,6 @@
 package com.hanyasoftware.android.smartassistedmotor.motor;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
+import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
 import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.Motor;
 
 import butterknife.BindView;
@@ -29,6 +31,8 @@ public class MotorActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBar actionBar;
 
+    private MotorViewModel motorViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,16 +47,26 @@ public class MotorActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        motorViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getMotorViewModelFactory())
+                .get(MotorViewModel.class);
+
         // Get motor here
-        Motor motor1 = new Motor(1, "N 1234 AB", "CB 150 R", "2018", "150 cc", "17");
-
-        // set text view
-        nopol.setText(motor1.getNopol());
-        tipe.setText(motor1.getTipe());
-        tahun.setText(motor1.getTahun());
-        lcMesin.setText(motor1.getLcMesin());
-        ukuranRoda.setText(motor1.getUkuranRoda());
-
+        motorViewModel.getKendaraan().observe(this, kendaraan -> {
+            if (kendaraan != null) {
+                // set text view
+                nopol.setText(kendaraan.getKnd_nopol());
+                tipe.setText(kendaraan.getKnd_tipe());
+                tahun.setText(kendaraan.getKnd_tahun());
+                lcMesin.setText(kendaraan.getKnd_lcmesin());
+                ukuranRoda.setText(kendaraan.getKnd_ukuranban());
+            } else {
+                nopol.setText("");
+                tipe.setText("");
+                tahun.setText("");
+                lcMesin.setText("");
+                ukuranRoda.setText("");
+            }
+        });
     }
 
     @Override
