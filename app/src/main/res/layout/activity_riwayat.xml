@@ -46,6 +46,7 @@
             <TableRow>
                 <TextView
                     android:id="@+id/riwayat_tableHeader1"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_column="1"
                     android:layout_weight="1"
@@ -58,6 +59,7 @@
 
                 <TextView
                     android:id="@+id/riwayat_tableHeader2"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_column="2"
                     android:layout_weight="1"
@@ -67,90 +69,6 @@
                     android:textColor="@color/primaryText"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-            </TableRow>
-
-            <TableRow>
-                <TextView
-                    android:id="@+id/riwayat_tableData1Col1"
-                    android:layout_height="30dp"
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical|start"
-                    android:text="1. Ganti Oli"
-                    android:textColor="@color/primaryText"
-                    android:textSize="16sp"
-                    android:paddingLeft="5dp"
-                    />
-
-                <TextView
-                    android:id="@+id/riwayat_tableData1Col2"
-                    android:layout_height="30dp"
-                    android:layout_column="2"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical|end"
-                    android:text="02 Januari 2018"
-                    android:textColor="@color/primaryText"
-                    android:textSize="16sp"
-                    android:paddingRight="5dp"
-                    />
-            </TableRow>
-
-            <TableRow>
-                <TextView
-                    android:id="@+id/riwayat_tableData2Col1"
-                    android:layout_height="30dp"
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical|start"
-                    android:text="2. Ganti Busi"
-                    android:textColor="@color/primaryText"
-                    android:textSize="16sp"
-                    android:paddingLeft="5dp"
-                    />
-
-                <TextView
-                    android:id="@+id/riwayat_tableData2Col2"
-                    android:layout_height="30dp"
-                    android:layout_column="2"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical|end"
-                    android:text="22 Januari 2018"
-                    android:textColor="@color/primaryText"
-                    android:textSize="16sp"
-                    android:paddingRight="5dp"
-                    />
-            </TableRow>
-
-            <TableRow>
-                <TextView
-                    android:id="@+id/riwayat_tableData3Col1"
-                    android:layout_height="30dp"
-                    android:layout_column="1"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical|start"
-                    android:text="3. Ganti V-Belt"
-                    android:textColor="@color/primaryText"
-                    android:textSize="16sp"
-                    android:paddingLeft="5dp"
-                    />
-
-                <TextView
-                    android:id="@+id/riwayat_tableData3Col2"
-                    android:layout_height="30dp"
-                    android:layout_column="2"
-                    android:layout_weight="1"
-                    android:background="@drawable/border"
-                    android:gravity="center_vertical|end"
-                    android:text="22 Februari 2018"
-                    android:textColor="@color/primaryText"
-                    android:textSize="16sp"
-                    android:paddingRight="5dp"
-                    />
             </TableRow>
 
         </TableLayout>

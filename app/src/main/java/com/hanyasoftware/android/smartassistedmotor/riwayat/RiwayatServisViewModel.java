@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public class TambahRiwayatServisViewModel extends ViewModel {
+public class RiwayatServisViewModel extends ViewModel {
 
     private final ServisRepository servisRepository;
     private final SharedPrefsRepository sharedPrefsRepository;
@@ -26,7 +26,7 @@ public class TambahRiwayatServisViewModel extends ViewModel {
     private MutableLiveData<List<ServisApi>> listServisLiveData;
     private final CompositeDisposable compositeDisposable;
 
-    public TambahRiwayatServisViewModel(ServisRepository servisRepository, SharedPrefsRepository sharedPrefsRepository) {
+    public RiwayatServisViewModel(ServisRepository servisRepository, SharedPrefsRepository sharedPrefsRepository) {
         this.servisRepository = servisRepository;
         this.sharedPrefsRepository = sharedPrefsRepository;
         this.tambahServisLiveData = new MutableLiveData<>();
@@ -56,13 +56,13 @@ public class TambahRiwayatServisViewModel extends ViewModel {
         return listServisLiveData;
     }
 
-    public static class TambahRiwayatServisViewModelFactory implements ViewModelProvider.Factory {
+    public static class RiwayatServisViewModelFactory implements ViewModelProvider.Factory {
 
         private final ServisRepository servisRepository;
         private final SharedPrefsRepository sharedPrefsRepository;
 
         @Inject
-        public TambahRiwayatServisViewModelFactory(ServisRepository servisRepository, SharedPrefsRepository sharedPrefsRepository) {
+        public RiwayatServisViewModelFactory(ServisRepository servisRepository, SharedPrefsRepository sharedPrefsRepository) {
             this.servisRepository = servisRepository;
             this.sharedPrefsRepository = sharedPrefsRepository;
         }
@@ -70,7 +70,7 @@ public class TambahRiwayatServisViewModel extends ViewModel {
         @NonNull
         @Override
         public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-            return (T) new TambahRiwayatServisViewModel(servisRepository, sharedPrefsRepository);
+            return (T) new RiwayatServisViewModel(servisRepository, sharedPrefsRepository);
         }
     }
 

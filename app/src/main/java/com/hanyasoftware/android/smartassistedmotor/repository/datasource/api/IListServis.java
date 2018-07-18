@@ -11,7 +11,6 @@ import retrofit2.http.Path;
 
 public interface IListServis {
 
-    @FormUrlEncoded
     @GET("api/listservis/{kendaraanId}")
     Single<List<ServisApi>> getListServis(@Path("kendaraanId") String kendaraanId);
 }

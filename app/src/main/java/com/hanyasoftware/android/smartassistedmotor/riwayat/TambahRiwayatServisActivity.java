@@ -1,7 +1,7 @@
 package com.hanyasoftware.android.smartassistedmotor.riwayat;
 
+import android.app.DatePickerDialog;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
 import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +32,9 @@ public class TambahRiwayatServisActivity extends AppCompatActivity {
     Toolbar toolbar;
     ActionBar actionBar;
 
-    private TambahRiwayatServisViewModel tambahRiwayatServisViewModel;
+    private RiwayatServisViewModel riwayatServisViewModel;
+
+    private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +50,31 @@ public class TambahRiwayatServisActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        tambahRiwayatServisViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getTambahRiwayatServisViewModelFactory())
-                .get(TambahRiwayatServisViewModel.class);
+        riwayatServisViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getRiwayatServisViewModelFactory())
+                .get(RiwayatServisViewModel.class);
 
         // TODO edit text tanggal open date picker
+        calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener datePicker = (datePicker1, year, month, day) -> {
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+            updateLabel();
+        };
+
+        edtTanggal.setOnClickListener(view -> {
+            new DatePickerDialog(TambahRiwayatServisActivity.this, datePicker,
+                    calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+        });
 
         btnSimpan.setOnClickListener(v -> simpanRiwayatServis());
+    }
+
+    private void updateLabel() {
+        String format = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+
+        edtTanggal.setText(sdf.format(calendar.getTime()));
     }
 
     private void simpanRiwayatServis() {
@@ -69,7 +93,7 @@ public class TambahRiwayatServisActivity extends AppCompatActivity {
 
         if (valid) {
             // save riwayat servis
-            tambahRiwayatServisViewModel.tambahRiwayatServis(tanggal, keterangan)
+            riwayatServisViewModel.tambahRiwayatServis(tanggal, keterangan)
                     .observe(this, response -> {
                         if (response.getInd() == 1) {
                             Toast.makeText(this, "Tambah riwayat servis berhasil", Toast.LENGTH_SHORT).show();
