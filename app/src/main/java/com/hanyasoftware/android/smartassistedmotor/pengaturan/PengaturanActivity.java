@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
 import com.hanyasoftware.android.smartassistedmotor.guest.GuestActivity;
+import com.hanyasoftware.android.smartassistedmotor.pilihmotor.PilihMotorActivity;
+import com.hanyasoftware.android.smartassistedmotor.ubahpassword.UbahPasswordActivity;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -31,6 +33,10 @@ public class PengaturanActivity extends AppCompatActivity {
     TextView motor;
     @BindView(R.id.pengaturan_suara)
     TextView suara;
+    @BindView(R.id.pengaturan_pilihMotor)
+    TextView pilihMotor;
+    @BindView(R.id.pengaturan_ubahPassword)
+    TextView ubahPassword;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     ActionBar actionBar;
@@ -58,6 +64,21 @@ public class PengaturanActivity extends AppCompatActivity {
         // motor on click
         motor.setOnClickListener(v -> motorOnClick());
 
+        // pilih motor on click
+        pilihMotor.setOnClickListener(v -> pilihMotor());
+
+        // ubah password on click
+        ubahPassword.setOnClickListener(v -> ubahPassword());
+    }
+
+    private void ubahPassword() {
+        Intent intent = new Intent(PengaturanActivity.this, UbahPasswordActivity.class);
+        startActivity(intent);
+    }
+
+    private void pilihMotor() {
+        Intent intent = new Intent(PengaturanActivity.this, PilihMotorActivity.class);
+        startActivity(intent);
     }
 
     private void alarmOnClick() {

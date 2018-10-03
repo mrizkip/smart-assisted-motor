@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".riwayat.TambahRiwayatServisActivity"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+
+    <include
+        layout="@layout/view_toolbar" />
+
+    <TextView
+        android:id="@+id/tambahRiwayat_textTanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Tanggal Servis"
+        android:textColor="@color/primaryText" />
+
+    <EditText
+        android:id="@+id/tambahRiwayat_tanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:drawableLeft="@drawable/ic_date_range_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="YYYY-MM-DD"
+        android:imeOptions="actionNext"
+        android:inputType="date"
+        android:maxLines="1" />
+
+    <TextView
+        android:id="@+id/tambahRiwayat_textKeterangan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Keterangan"
+        android:textColor="@color/primaryText" />
+
+    <EditText
+        android:id="@+id/tambahRiwayat_keterangan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:drawableLeft="@drawable/ic_edit_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="Keterangan Servis"
+        android:imeOptions="actionDone"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/tambahRiwayat_simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="SIMPAN"
+        android:textColor="@color/white"
+        android:background="@drawable/button_background"
+        />
+
+
+
+</LinearLayout>

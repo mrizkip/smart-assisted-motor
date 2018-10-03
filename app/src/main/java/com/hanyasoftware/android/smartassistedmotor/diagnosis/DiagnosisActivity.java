@@ -1,5 +1,6 @@
 package com.hanyasoftware.android.smartassistedmotor.diagnosis;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,18 +9,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.hanyasoftware.android.smartassistedmotor.R;
-import com.hanyasoftware.android.smartassistedmotor.guest.DetailGuestAdapter;
-import com.hanyasoftware.android.smartassistedmotor.guest.MapKeyPerawatan;
-import com.hanyasoftware.android.smartassistedmotor.guest.TabelCb150r;
+import com.hanyasoftware.android.smartassistedmotor.SAMApplication;
+import com.hanyasoftware.android.smartassistedmotor.repository.entity.api.DiagnosaResponse;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,23 +28,19 @@ public class DiagnosisActivity extends AppCompatActivity {
     TextView jarakTempuh;
     @BindView(R.id.diagnosis_textDiagnosis)
     TextView textDiagnosis;
-    @BindView(R.id.diagnosis_buttonPrediksi)
-    Button buttonPrediksi;
     @BindView(R.id.diagnosis_recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.diagnosis_totalBiaya)
+    TextView tvTotalBiaya;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     ActionBar actionBar;
 
-    private String motor;
-    private String kilometer;
+    private List<DiagnosaAdapter> diagnosaAdapters;
+    private FastItemAdapter<DiagnosaAdapter> fastItemAdapter;
+    private int jumlahBiaya = 0;
 
-    private Map<MapKeyPerawatan, List<DetailGuestAdapter>> mapTabelCb150r;
-
-    private MapKeyPerawatan keyCb150r;
-
-    private List<DetailGuestAdapter> detailGuestAdapters;
-    private FastItemAdapter<DetailGuestAdapter> fastItemAdapter;
+    private DiagnosaViewModel diagnosaViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +56,9 @@ public class DiagnosisActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        diagnosaViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getDiagnosaViewModelFactory())
+                .get(DiagnosaViewModel.class);
+
         Intent intent = getIntent();
         String jarak = intent.getStringExtra("jarak");
 
@@ -72,55 +69,49 @@ public class DiagnosisActivity extends AppCompatActivity {
         textDiagnosis.setText("Diagnosis pada jarak " + jarak + " km.");
 
         // init
-        detailGuestAdapters = new ArrayList<>();
+        diagnosaAdapters = new ArrayList<>();
         fastItemAdapter = new FastItemAdapter<>();
-        keyCb150r = new MapKeyPerawatan();
-        initTableCb150r();
+        fastItemAdapter.set(diagnosaAdapters);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(fastItemAdapter);
 
-        // set motor
-        motor = "CB 150R";
-        int jarakInt = Integer.parseInt(jarak);
-        if (jarakInt >= 0 && jarakInt < 4000) {
-            kilometer = "1.000 Km";
-        } else if (jarakInt >= 4000 && jarakInt < 12000) {
-            kilometer = "6.000 Km";
-        } else if (jarakInt >= 12000 && jarakInt < 18000) {
-            kilometer = "12.000 Km";
-        } else if (jarakInt >= 18000 && jarakInt < 24000) {
-            kilometer = "18.000 Km";
-        } else if (jarakInt >= 24000 && jarakInt < 30000) {
-            kilometer = "24.000 Km";
-        } else if (jarakInt >= 30000 && jarakInt < 36000) {
-            kilometer = "30.000 Km";
-        } else if (jarakInt >= 36000 && jarakInt < 42000) {
-            kilometer = "36.000 Km";
-        } else if (jarakInt >= 42000 && jarakInt < 48000) {
-            kilometer = "42.000 Km";
-        } else if (jarakInt >= 48000 && jarakInt < 54000) {
-            kilometer = "48.000 Km";
-        } else if (jarakInt >= 54000) {
-            kilometer = "54.000 Km";
-        }
-
-        // get diagnosis
-        keyCb150r.setMotor(motor);
-        keyCb150r.setKilometer(kilometer);
-        if (mapTabelCb150r.containsKey(keyCb150r)) {
-            detailGuestAdapters.clear();
-            detailGuestAdapters = mapTabelCb150r.get(keyCb150r);
-        }
-
-        if (detailGuestAdapters != null && !detailGuestAdapters.isEmpty()) {
-            fastItemAdapter.set(detailGuestAdapters);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(fastItemAdapter);
-        }
+        diagnosaViewModel.getDiagnosa().observe(this, diagnosaResponse -> {
+            if (diagnosaResponse != null) {
+                updateDiagnosa(diagnosaResponse);
+            }
+        });
 
     }
 
-    private void initTableCb150r() {
-        TabelCb150r tabelCb150r =  new TabelCb150r();
-        mapTabelCb150r = tabelCb150r.getMapTableCb150r();
+    private void updateDiagnosa(DiagnosaResponse diagnosaResponse) {
+        if (diagnosaResponse != null && diagnosaResponse.getInd() == 1) {
+            diagnosaAdapters.removeAll(diagnosaAdapters);
+            String[] arrayDiagnosa = diagnosaResponse.getDiagnosa().split(";");
+            for (String baris : arrayDiagnosa) {
+                String[] column = baris.split(":");
+                int biaya;
+                try {
+                    biaya = Integer.parseInt(column[3]);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    biaya = 0;
+                }
+
+                jumlahBiaya += biaya;
+
+                DiagnosaAdapter itemAdapter = new DiagnosaAdapter();
+                itemAdapter.setNomor(column[0]);
+                itemAdapter.setPerawatan(column[1]);
+                itemAdapter.setKeterangan(column[2] + "\n" + "Biaya: " + biaya);
+
+                diagnosaAdapters.add(itemAdapter);
+            }
+
+            fastItemAdapter.set(diagnosaAdapters);
+            fastItemAdapter.notifyDataSetChanged();
+
+            tvTotalBiaya.setText("Total Prediksi Biaya: Rp " + jumlahBiaya);
+        }
+
     }
 
     @Override

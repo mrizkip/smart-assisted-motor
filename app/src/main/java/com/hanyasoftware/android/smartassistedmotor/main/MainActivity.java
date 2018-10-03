@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             actionBar = getSupportActionBar();
             actionBar.setTitle("Smart Assisted Motor");
         }
+        jarak = new Jarak();
         initListKm();
 
         Dexter.withActivity(this)
@@ -140,18 +141,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void permissionGranted() {
-        jarak = new Jarak();
         mainViewModel = ViewModelProviders.of(this, SAMApplication.getDataComponent().getMainViewModelFactory())
                 .get(MainViewModel.class);
         sharedPrefsRepository = SAMApplication.getDataComponent().getSharedPrefsRepository();
         mainViewModel.getJarak().observe(this, jarak1 -> {
             jarak = jarak1;
-            if (jarak.getJarak() == null || jarak.getJarak().isEmpty()) {
+            if (jarak1 == null) {
                 jarakTempuh.setText("0");
             } else {
                 jarakTempuh.setText(jarak.getJarak());
 
-                // TODO build notification from every request jarak
+                //  build notification from every request jarak
                 boolean switchState = sharedPrefsRepository.getSwitchState();
                 if (switchState) {
                     int jarakInt = Integer.parseInt(jarak.getJarak());
@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
     private void diagnosisOnClick() {
         Intent intent = new Intent(MainActivity.this, DiagnosisActivity.class);
         String jarakIntent;
-        if (jarak.getJarak() == null || jarak.getJarak().isEmpty()) {
+        if (jarakTempuh.getText().toString().equalsIgnoreCase("0")) {
             jarakIntent = "0";
         } else {
             jarakIntent = jarak.getJarak();

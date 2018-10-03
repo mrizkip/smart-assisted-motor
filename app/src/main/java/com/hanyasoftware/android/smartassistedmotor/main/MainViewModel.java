@@ -13,26 +13,30 @@ import com.hanyasoftware.android.smartassistedmotor.repository.entity.local.Jara
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+
 public class MainViewModel extends ViewModel {
 
-    private static final String TAG = "MainViewModel";
-
     private final JarakRepository jarakRepository;
-    private final MutableLiveData<Jarak> jarak;
+    private MutableLiveData<Jarak> jarak;
+    private final CompositeDisposable compositeDisposable;
 
     public MainViewModel(JarakRepository jarakRepository) {
         this.jarakRepository = jarakRepository;
         jarak = new MutableLiveData<>();
+        compositeDisposable = new CompositeDisposable();
 
         fetchJarak();
     }
 
-    @SuppressLint("CheckResult")
     private void fetchJarak() {
-        jarakRepository.getJarak()
+        Disposable disposable = jarakRepository.getJarak()
                 .subscribe(this.jarak::postValue, throwable -> {
-                    Log.e(TAG, "fetchJarak: Error");
+                    this.jarak.postValue(null);
+                    throwable.printStackTrace();
                 });
+        compositeDisposable.add(disposable);
     }
 
     public LiveData<Jarak> getJarak() {
@@ -52,6 +56,14 @@ public class MainViewModel extends ViewModel {
         @Override
         public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
             return (T) new MainViewModel(jarakRepository);
+        }
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        if (!compositeDisposable.isDisposed()) {
+            compositeDisposable.dispose();
         }
     }
 }

@@ -35,7 +35,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".pengaturan.PengaturanSuaraActivity" />
-        <activity android:name=".pengaturan.TambahMotorActivity"></activity>
+        <activity android:name=".pengaturan.TambahMotorActivity" />
+        <activity android:name=".register.RegisterActivity" />
+        <activity android:name=".pilihmotor.PilihMotorActivity" />
+        <activity android:name=".ubahpassword.UbahPasswordActivity" />
+        <activity android:name=".riwayat.TambahRiwayatServisActivity"></activity>
     </application>
 
 </manifest>

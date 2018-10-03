@@ -16,15 +16,17 @@ public class JarakRepository {
 
     private final IFetchJarak iFetchJarak;
     private final JarakResponseToJarak jarakResponseToJarak;
+    private final SharedPrefsRepository sharedPrefsRepository;
 
     @Inject
-    public JarakRepository(IFetchJarak iFetchJarak, JarakResponseToJarak jarakResponseToJarak) {
+    public JarakRepository(IFetchJarak iFetchJarak, JarakResponseToJarak jarakResponseToJarak, SharedPrefsRepository sharedPrefsRepository) {
         this.iFetchJarak = iFetchJarak;
         this.jarakResponseToJarak = jarakResponseToJarak;
+        this.sharedPrefsRepository = sharedPrefsRepository;
     }
 
     public Observable<Jarak> getJarak() {
-        String id = "1";
+        String id = sharedPrefsRepository.getKendaraanFromPrefs().getKnd_id();
         return iFetchJarak.fetchJarak(id)
                 .toObservable()
                 .map(jarakResponseToJarak::transform)

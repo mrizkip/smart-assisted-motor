@@ -110,17 +110,18 @@
                 android:layout_height="1dp"
                 android:background="@drawable/line_divider" />
 
-            <Button
-                android:id="@+id/diagnosis_buttonPrediksi"
+            <TextView
+                android:id="@+id/diagnosis_totalBiaya"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                tools:text="Total Prediksi Biaya: Rp 100.000"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Prediksi Biaya"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/primaryText"
                 android:textSize="16sp"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="@color/colorPrimary"
+                android:textStyle="bold"
                 />
 
         </LinearLayout>

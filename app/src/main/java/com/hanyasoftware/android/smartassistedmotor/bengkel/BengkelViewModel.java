@@ -18,8 +18,8 @@ public class BengkelViewModel extends ViewModel {
     private static final String TAG = "BengkelViewModel";
 
     private final BengkelRepository bengkelRepository;
-    private final MutableLiveData<List<BengkelAdapter>> listBengkel;
     private final BengkelToBengkelAdapter bengkelToBengkelAdapter;
+    private MutableLiveData<List<BengkelAdapter>> listBengkel;
 
     public BengkelViewModel(BengkelRepository bengkelRepository, BengkelToBengkelAdapter bengkelToBengkelAdapter) {
         this.bengkelRepository = bengkelRepository;

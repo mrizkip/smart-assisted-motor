@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detailGuest_adapter"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,7 +16,7 @@
         android:maxLines="1"
         android:paddingRight="5dp"
         android:paddingTop="5dp"
-        android:text="1"
+        tools:text="1"
         android:textColor="@color/primaryText"
         android:textSize="14sp" />
 
@@ -26,7 +27,7 @@
         android:background="@drawable/border"
         android:gravity="start|top"
         android:padding="5dp"
-        android:text="Saluran Bahan Bakar"
+        tools:text="Saluran Bahan Bakar"
         android:textColor="@color/primaryText"
         android:textSize="14sp" />
 
@@ -37,7 +38,7 @@
         android:background="@drawable/border"
         android:gravity="start|top"
         android:padding="5dp"
-        android:text="Periksa dan bersihkan, setel, lumasi atau ganti bila perlu"
+        tools:text="Periksa dan bersihkan, setel, lumasi atau ganti bila perlu"
         android:textColor="@color/primaryText"
         android:textSize="14sp" />
 
